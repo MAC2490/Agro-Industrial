@@ -11,9 +11,10 @@ public class insumos {
     String fecha_compra;
     String costo_compra;
     String proveedor;
+    String estado;
 
     // CREAMOS LAS VARIABLE DE DATOS 
-    public insumos(String insumos_id, String name, String serial, String tipo_insumo, String unidada_medida, String cantidad, String fecha_compra, String costo_compra, String proveedor) {
+    public insumos(String insumos_id, String name, String serial, String tipo_insumo, String unidada_medida, String cantidad, String fecha_compra, String costo_compra, String proveedor, String estado) {
         this.insumos_id = insumos_id;
         this.name = name;
         this.serial = serial;
@@ -23,6 +24,7 @@ public class insumos {
         this.fecha_compra = fecha_compra;
         this.costo_compra = costo_compra;
         this.proveedor = proveedor;
+        this.estado = estado;
     }
 
     public String getInsumos_id() {
@@ -59,6 +61,10 @@ public class insumos {
 
     public String getProveedor() {
         return proveedor;
+    }
+
+    public String getEstado() {
+        return estado;
     }
 
 }

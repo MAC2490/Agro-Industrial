@@ -2,8 +2,18 @@ package Principal;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import Clases.insumos;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 public class Alert extends javax.swing.JFrame {
+
+    insumos[] insumo = null;
+    
 
     public Alert(String titulo, String mensaje, String tipo) {
         initComponents();
@@ -27,6 +37,7 @@ public class Alert extends javax.swing.JFrame {
         setVisible(true);
     }
 
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

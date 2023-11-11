@@ -12,6 +12,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import Principal.ConsumoAPI;
+import jdk.jfr.Event;
 
 public class FormularioRegistroInsumo extends javax.swing.JFrame {
 
@@ -53,6 +54,7 @@ public class FormularioRegistroInsumo extends javax.swing.JFrame {
         fecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 204, 0));
@@ -68,12 +70,27 @@ public class FormularioRegistroInsumo extends javax.swing.JFrame {
         unidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         cantidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cantidadKeyTyped(evt);
+            }
+        });
 
         nombre_insumo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         provedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        provedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                provedorKeyTyped(evt);
+            }
+        });
 
         costo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        costo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                costoKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial Narrow", 1, 12)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
@@ -244,7 +261,7 @@ public class FormularioRegistroInsumo extends javax.swing.JFrame {
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         String nombre = this.nombre_insumo.getText();
-        String serial = this.serial.getText();
+        String serial = this.serial.getText().trim();
         String tipo = this.tipo.getText();
         String unidad = this.unidad.getText();
         String cantidad = this.cantidad.getText();
@@ -293,12 +310,11 @@ public class FormularioRegistroInsumo extends javax.swing.JFrame {
             }
         } else {
             Alert alerta = new Alert("Serial Duplicado", "El serial ya existe en la base de datos", "error");
-           
+
         }
-
-
     }//GEN-LAST:event_registrarActionPerformed
 
+   
     public void validarInputs() {
         validarInput(this.nombre_insumo);
         validarInput(this.serial);
@@ -348,6 +364,25 @@ public class FormularioRegistroInsumo extends javax.swing.JFrame {
         // abrimos una nueva ventana para que se me actulize la tabla
 
     }//GEN-LAST:event_atrasActionPerformed
+
+    private void cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidadKeyTyped
+        // este metodo es para validar que solo se ingreses numeros 
+
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_cantidadKeyTyped
+
+    private void costoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_costoKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_costoKeyTyped
+
+    private void provedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_provedorKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && ((c < 'A' || c > 'Z'))) evt.consume();
+    }//GEN-LAST:event_provedorKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

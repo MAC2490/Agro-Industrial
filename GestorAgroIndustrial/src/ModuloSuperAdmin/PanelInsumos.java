@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import Clases.*;
+import Principal.Alert;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import java.awt.*;
@@ -21,7 +22,8 @@ import javax.swing.JLabel;
 public class PanelInsumos extends javax.swing.JPanel {
 
     insumos[] Insumos = null;
-    // formateamos la tabla
+    boolean estado_insumo;
+    String texto; // formateamos la tabla
     DefaultTableModel tabla;
     // hacemos llamado a la clase consumo api
     ConsumoAPI API = new ConsumoAPI();
@@ -33,8 +35,8 @@ public class PanelInsumos extends javax.swing.JPanel {
 
     public void initAlternComponents() {
         this.tabla = (DefaultTableModel) this.tabla_insumos.getModel();
-        this.tabla_insumos.getColumn("ELIMINAR").setCellRenderer(new ButtonRenderer());
-        this.tabla_insumos.getColumn("ELIMINAR").setCellEditor(new ButtonEditor(new JCheckBox()));
+        this.tabla_insumos.getColumn("DESACTIVAR").setCellRenderer(new ButtonRenderer());
+        this.tabla_insumos.getColumn("DESACTIVAR").setCellEditor(new ButtonEditor(new JCheckBox()));
         this.tabla_insumos.getColumn("MODIFICAR").setCellRenderer(new ButtonRenderer());
         this.tabla_insumos.getColumn("MODIFICAR").setCellEditor(new ButtonEditor(new JCheckBox()));
 
@@ -64,24 +66,39 @@ public class PanelInsumos extends javax.swing.JPanel {
                 String fecha_compra = Insumos[i].getFecha_compra();
                 String costo_compra = Insumos[i].getCosto_compra();
                 String proveedor = Insumos[i].getProveedor();
-
+                String estado = Insumos[i].getEstado();
+                System.out.println("Estado se insumo" + Insumos[i].getEstado());
                 // creamos los botones para hacer la eliminacion o actulalizacion de datos 
-                JButton btnEliminar = new JButton();
+                JButton btndesactivar = new JButton();
                 JButton btnModificar = new JButton();
 
-                ImageIcon iconEliminar = new ImageIcon(getClass().getResource("/img/eliminar.png"));
+                ImageIcon iconodesactivar = new ImageIcon(getClass().getResource("/img/disable.png"));
                 ImageIcon iconModificar = new ImageIcon(getClass().getResource("/img/actualizar.png"));
 
-                btnEliminar.setIcon(iconEliminar);
+                btndesactivar.setIcon(iconodesactivar);
                 btnModificar.setIcon(iconModificar);
 
-                btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cambiar cursor a mano
+                btndesactivar.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cambiar cursor a mano
                 btnModificar.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cambiar cursor a mano
 
-                btnEliminar.addActionListener(new ActionListener() {
+                // variable que le mandamos a el jframe para saber que tipo de insumo vamos a modificaar 
+                final int posicion = i;
+
+                final PanelInsumos ventanaP = this;
+
+                btndesactivar.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("Has dado clik en eliminar");
+                        // abrimos un mensaje de alerta a este
+                        if (Insumos[posicion].getEstado().trim().equalsIgnoreCase("ACTIVO")) {
+                            texto = "Deseas Deshabilitar este insumo ?";
+                            estado_insumo = true;
+                        } else if (Insumos[posicion].getEstado().trim().equalsIgnoreCase("DESHABILITADO")) {
+                            texto = "Deseas Habilitar Este insumo ?";
+                            estado_insumo = false;
+                        }
+                        EstadoInsumo estadoI = new EstadoInsumo(texto, Insumos[posicion], estado_insumo, ventanaP);
+                        System.out.println("Has dado clik en desactivar");
                     }
                 }
                 );
@@ -89,11 +106,15 @@ public class PanelInsumos extends javax.swing.JPanel {
                 btnModificar.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        // aqui le mandamos el insumo con todos los datos para que los pueda modificar
                         System.out.println("Has dado clik en actualizar");
+                        ModificarInsumo modificar = new ModificarInsumo(ventanaP, Insumos[posicion]);
+                        modificar.setVisible(true);
+
                     }
                 }
                 );
-                Object[] temporal = new Object[]{serial, name, cantidad, fecha_compra, costo_compra, proveedor, btnEliminar, btnModificar};
+                Object[] temporal = new Object[]{serial, name, cantidad, fecha_compra, costo_compra, proveedor, estado, btndesactivar, btnModificar};
 
                 this.tabla.addRow(temporal);
                 // ahora mostramos los datos en la tabla
@@ -149,17 +170,17 @@ public class PanelInsumos extends javax.swing.JPanel {
 
         tabla_insumos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "SERIAL", "NOMBRE", "CANTIDAD", "FECHA", "COSTO", "PROVEDOR", "ELIMINAR", "MODIFICAR"
+                "SERIAL", "NOMBRE", "CANTIDAD", "FECHA", "COSTO", "PROVEDOR", "ESTADO", "DESACTIVAR", "MODIFICAR"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -176,6 +197,7 @@ public class PanelInsumos extends javax.swing.JPanel {
             tabla_insumos.getColumnModel().getColumn(3).setResizable(false);
             tabla_insumos.getColumnModel().getColumn(4).setResizable(false);
             tabla_insumos.getColumnModel().getColumn(5).setResizable(false);
+            tabla_insumos.getColumnModel().getColumn(6).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
