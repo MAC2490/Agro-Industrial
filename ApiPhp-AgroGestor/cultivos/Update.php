@@ -5,16 +5,16 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 include 'Conexion.php';
 
-if (!empty($_POST['nombre']) and !empty($_POST['descripcion'] and !empty($_POST['tiempoCosecha']) and !empty($_POST['estado']) and !empty($_POST['id_cultivo']))) {
+if (!empty($_POST['nombreCultivo']) and !empty($_POST['descripcionCultivo'] and !empty($_POST['tiempoCosecha']) and !empty($_POST['estado']) and !empty($_POST['id_cultivo']))) {
 
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
+    $nombre = $_POST['nombreCultivo'];
+    $descripcion = $_POST['descripcionCultivo'];
     $tiempoCosecha = $_POST['tiempoCosecha'];
     $estado = $_POST['estado'];
     $id_cultivo = $_POST['id_cultivo'];
 
     try {
-        $consulta = $base_de_datos->prepare("UPDATE cultivos SET nombres=:nom, descripcion=:descri, tiempoCosecha=:tiemp, estado=:esta WHERE id_cultivo = :id ");
+        $consulta = $base_de_datos->prepare("UPDATE cultivos SET nombre=:nom, descripcion=:descri, tiempo_cosecha=:tiemp, estado=:esta WHERE id_cultivo = :id ");
 
         $consulta->bindParam(':nom', $nombre);
         $consulta->bindParam(':descri', $descripcion);

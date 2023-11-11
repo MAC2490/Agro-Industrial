@@ -54,7 +54,7 @@ public class PanelCultivos extends javax.swing.JPanel {
 
     public void mostrarCultivos() {
         // URL de la API para obtener los datos de los cultivos
-        String apiUrl = "http://localhost/ApiPhp-AgroGestor-copia/cultivos/Obtener.php";
+        String apiUrl = "http://localhost/ApiPhp-AgroGestor/cultivos/Obtener.php";
 
         // Realizar la solicitud GET a la API
         ConsumoAPI api = new ConsumoAPI();

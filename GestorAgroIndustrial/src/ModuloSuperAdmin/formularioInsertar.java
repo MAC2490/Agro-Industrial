@@ -46,7 +46,7 @@ public class formularioInsertar extends javax.swing.JPanel {
     }
     
     public void editarCultivo(String nombreCultivo, String descripcionCultivo, String tiempoCosecha, String estado) {
-        String urlEditarCultivo = "http://localhost/ApiPhp-AgroGestor-copia/cultivos/Update.php";   
+        String urlEditarCultivo = "http://localhost/ApiPhp-AgroGestor/cultivos/Update.php";   
     
         Map<String, String> postData = new HashMap<>();
         postData.put("nombreCultivo", nombreCultivo);
