@@ -9,10 +9,11 @@ public class formularioInsertar extends javax.swing.JPanel {
     private ConsumoAPI consumoAPI;
     boolean modoEdicion = false;
     String id = "";
-    
+    int i = 0;
     public formularioInsertar() {
         consumoAPI = new ConsumoAPI();
         initComponents();
+        
     }
     
     // Getter para el campo nombre
@@ -37,12 +38,22 @@ public class formularioInsertar extends javax.swing.JPanel {
 
     public void setDatos (String id ,String nombre, String descripcion, String tiempoCosecha, String estado) {
         // Establece los valores en los campos del formulario de edición
-        this.id = id;
-        nombreJ.setText(nombre);
-        descripcionJ.setText(descripcion);
-        tiempoCosechaJ.setText(tiempoCosecha);
-        estadoJ.setText(estado);
-        this.modoEdicion = true;
+        if (id != "") {
+            this.id = id;
+            nombreJ.setText(nombre);
+            descripcionJ.setText(descripcion);
+            tiempoCosechaJ.setText(tiempoCosecha);
+            estadoJ.setText(estado);
+            this.modoEdicion = true;
+        }else{
+            nombreJ.setText("");
+            descripcionJ.setText("");
+            tiempoCosechaJ.setText("");
+            estadoJ.setText("");
+        }
+        
+        i++;
+        System.out.println("prueba "+this.i);
     }
     
     public void editarCultivo(String nombreCultivo, String descripcionCultivo, String tiempoCosecha, String estado) {

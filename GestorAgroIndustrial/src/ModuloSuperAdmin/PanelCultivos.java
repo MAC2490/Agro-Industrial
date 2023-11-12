@@ -21,22 +21,17 @@ public class PanelCultivos extends javax.swing.JPanel {
 
     private ConsumoAPI consumoAPI;
     formularioInsertar formulario = new formularioInsertar();
+    private JButton editar = new JButton();
 
     public PanelCultivos() {
         consumoAPI = new ConsumoAPI();
         initComponents();
         mostrarCultivos();
-        registrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // Llama a la función mostrarFormulario para mostrar el formulario de inserción de cultivos
-                mostrarFormulario();
-            }
-        });
     }
 
     Color[] colores = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE, Color.PINK};
 
-    private void mostrarFormulario() {
+    /*private void mostrarFormulario() {
         // Crear una instancia del formularioInsertar
         
         abrirFormulario(formulario);
@@ -48,7 +43,7 @@ public class PanelCultivos extends javax.swing.JPanel {
         dialog.pack();
         dialog.setLocationRelativeTo(null); // Centrar el diálogo en la pantalla
         dialog.setVisible(true);
-    }
+    }*/
 
     
 
@@ -87,18 +82,18 @@ public class PanelCultivos extends javax.swing.JPanel {
             JsonElement estado = objeto.get("estado");
 
             //biutton editar
-            JButton editar = new JButton("Editar");
+            this.editar = new JButton("Editar");
 
             //evento
-            editar.addActionListener(new ActionListener() {
+            this.editar.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                     // Obtén los valores de nombre, descripción, tiempoCosecha y estado correspondientes a esta tarjeta
                     String nombreEditar = nombre.getAsString();
                     String descripcionEditar = descripcion.getAsString();
                     String tiempoCosechaEditar = tiempoCosecha.getAsString();
                     String estadoEditar = estado.getAsString();
-
-
+                    
+                    
                     formulario.setDatos(id.getAsString() ,nombreEditar, descripcionEditar, tiempoCosechaEditar, estadoEditar);
                     abrirFormulario(formulario);
                 }
@@ -145,9 +140,18 @@ public class PanelCultivos extends javax.swing.JPanel {
         dialog.pack();
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
+        bloquearBtn(true);
     }
 
-    
+    public void bloquearBtn(boolean permitir){
+        /*if (permitir) {
+            this.registrar.setEnabled(false);
+            this.editar.setEnabled(false);
+        }else{
+            this.registrar.setEnabled(false);
+            this.editar.setEnabled(false);
+        }*/
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -203,7 +207,8 @@ public class PanelCultivos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-
+        this.formulario.setDatos("" ,"", "", "", "");
+        this.abrirFormulario(formulario);
     }//GEN-LAST:event_registrarActionPerformed
 
 
