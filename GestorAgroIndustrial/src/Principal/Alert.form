@@ -35,18 +35,32 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
               <Component id="contentPrincipal" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+=======
+              <Component id="contentPrincipal" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+>>>>>>> origin/dev02
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="contentPrincipal">
+<<<<<<< HEAD
+=======
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+>>>>>>> origin/dev02
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnAceptar" min="-2" pref="95" max="-2" attributes="0"/>
@@ -61,12 +75,28 @@
                       <Component id="etqMensaje" min="-2" pref="213" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="14" max="32767" attributes="0"/>
+=======
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="etqImagen" alignment="1" max="32767" attributes="0"/>
+                      <Component id="etqTitulo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="etqMensaje" alignment="1" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                  <Component id="btnAceptar" min="-2" pref="95" max="-2" attributes="0"/>
+                  <EmptySpace pref="108" max="32767" attributes="0"/>
+>>>>>>> origin/dev02
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="etqTitulo" min="-2" pref="25" max="-2" attributes="0"/>
@@ -78,6 +108,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnAceptar" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+=======
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="etqImagen" min="-2" pref="84" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <Component id="etqMensaje" min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnAceptar" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+>>>>>>> origin/dev02
               </Group>
           </Group>
         </DimensionLayout>
@@ -85,6 +126,12 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="etqTitulo">
           <Properties>
+<<<<<<< HEAD
+=======
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+>>>>>>> origin/dev02
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="24" style="1"/>
             </Property>
@@ -96,12 +143,24 @@
         </Component>
         <Component class="javax.swing.JLabel" name="etqImagen">
           <Properties>
+<<<<<<< HEAD
+=======
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+>>>>>>> origin/dev02
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="etqMensaje">
           <Properties>
+<<<<<<< HEAD
+=======
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+>>>>>>> origin/dev02
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
@@ -114,15 +173,28 @@
         <Component class="javax.swing.JButton" name="btnAceptar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
               <Color blue="66" green="0" red="0" type="rgb"/>
+=======
+              <Color blue="ea" green="ea" red="ea" type="rgb"/>
+>>>>>>> origin/dev02
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
+<<<<<<< HEAD
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Aceptar"/>
+=======
+            <Property name="text" type="java.lang.String" value="ACEPTAR"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder thickness="3"/>
+              </Border>
+            </Property>
+>>>>>>> origin/dev02
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>

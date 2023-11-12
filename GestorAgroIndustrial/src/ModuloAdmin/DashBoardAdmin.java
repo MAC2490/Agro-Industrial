@@ -7,9 +7,11 @@ import Principal.Login;
 public class DashBoardAdmin extends javax.swing.JFrame {
 
     Login ventanaLogin;
+    String SesionUsuario;
     
-    public DashBoardAdmin(Login ventanaLogin) {
+    public DashBoardAdmin(Login ventanaLogin, String DatosUsuario) {
         this.ventanaLogin=ventanaLogin;
+        this.SesionUsuario=DatosUsuario;
         
         initComponents();
         initAlternComponents();
@@ -44,7 +46,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         PanelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("DashBoard SuperAdmin - Gestor AgroIndustrial");
+        setTitle("DashBoard Admin - Gestor AgroIndustrial");
         setResizable(false);
 
         PanelHeaderB.setBackground(new java.awt.Color(0, 0, 0));
@@ -83,10 +85,11 @@ public class DashBoardAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelSideBar.setBackground(new java.awt.Color(135, 174, 193));
+        panelSideBar.setBackground(new java.awt.Color(0, 0, 153));
 
-        btnFincas.setBackground(new java.awt.Color(125, 164, 183));
+        btnFincas.setBackground(new java.awt.Color(0, 0, 102));
         btnFincas.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnFincas.setForeground(new java.awt.Color(255, 255, 255));
         btnFincas.setText("MI FINCA");
         btnFincas.setBorderPainted(false);
         btnFincas.setFocusable(false);
@@ -96,28 +99,36 @@ public class DashBoardAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnPerfil.setBackground(new java.awt.Color(135, 174, 193));
+        btnPerfil.setBackground(new java.awt.Color(0, 0, 153));
         btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ProfileButton.png"))); // NOI18N
         btnPerfil.setBorderPainted(false);
         btnPerfil.setFocusable(false);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
 
-        separador.setBackground(new java.awt.Color(50, 50, 50));
-        separador.setForeground(new java.awt.Color(50, 50, 50));
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnCultivos.setBackground(new java.awt.Color(125, 164, 183));
+        btnCultivos.setBackground(new java.awt.Color(0, 0, 102));
         btnCultivos.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnCultivos.setForeground(new java.awt.Color(255, 255, 255));
         btnCultivos.setText("CULTIVOS");
         btnCultivos.setBorderPainted(false);
         btnCultivos.setFocusable(false);
 
-        btnInsumos.setBackground(new java.awt.Color(125, 164, 183));
+        btnInsumos.setBackground(new java.awt.Color(0, 0, 102));
         btnInsumos.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnInsumos.setForeground(new java.awt.Color(255, 255, 255));
         btnInsumos.setText("INSUMOS");
         btnInsumos.setBorderPainted(false);
         btnInsumos.setFocusable(false);
 
-        btnRegistros.setBackground(new java.awt.Color(125, 164, 183));
+        btnRegistros.setBackground(new java.awt.Color(0, 0, 102));
         btnRegistros.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnRegistros.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistros.setText("REGISTROS");
         btnRegistros.setBorderPainted(false);
         btnRegistros.setFocusable(false);
@@ -194,12 +205,12 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         PanelHeaderA.setBackground(new java.awt.Color(0, 0, 0));
 
         etqDashBoard.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
-        etqDashBoard.setForeground(new java.awt.Color(135, 174, 193));
+        etqDashBoard.setForeground(new java.awt.Color(255, 255, 255));
         etqDashBoard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqDashBoard.setText("DASHBOARD");
 
         etqRol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        etqRol.setForeground(new java.awt.Color(135, 174, 193));
+        etqRol.setForeground(new java.awt.Color(255, 255, 255));
         etqRol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqRol.setText("Admin");
 
@@ -280,6 +291,17 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         repaint();
         revalidate();
     }//GEN-LAST:event_btnFincasActionPerformed
+
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+        PanelPrincipal.removeAll();
+
+        PanelPerfil temporal = new PanelPerfil(SesionUsuario);
+        temporal.setSize(PanelPrincipal.getSize());
+        temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
+        PanelPrincipal.add(temporal);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_btnPerfilActionPerformed
 
     
 
