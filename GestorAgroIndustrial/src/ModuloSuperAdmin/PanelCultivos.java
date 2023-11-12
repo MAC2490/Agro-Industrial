@@ -154,6 +154,7 @@ public class PanelCultivos extends javax.swing.JPanel {
     private void initComponents() {
 
         registrar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         contenedor1 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(204, 255, 204));
@@ -168,10 +169,18 @@ public class PanelCultivos extends javax.swing.JPanel {
             }
         });
 
-        java.awt.GridBagLayout contenedor1Layout = new java.awt.GridBagLayout();
-        contenedor1Layout.columnWidths = new int[] {1};
-        contenedor1Layout.rowHeights = new int[] {5};
+        javax.swing.GroupLayout contenedor1Layout = new javax.swing.GroupLayout(contenedor1);
         contenedor1.setLayout(contenedor1Layout);
+        contenedor1Layout.setHorizontalGroup(
+            contenedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 664, Short.MAX_VALUE)
+        );
+        contenedor1Layout.setVerticalGroup(
+            contenedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 354, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(contenedor1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -181,7 +190,7 @@ public class PanelCultivos extends javax.swing.JPanel {
                 .addContainerGap(558, Short.MAX_VALUE)
                 .addComponent(registrar)
                 .addGap(17, 17, 17))
-            .addComponent(contenedor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +198,7 @@ public class PanelCultivos extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addComponent(registrar)
                 .addGap(18, 18, 18)
-                .addComponent(contenedor1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -200,6 +209,7 @@ public class PanelCultivos extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenedor1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton registrar;
     // End of variables declaration//GEN-END:variables
 }
