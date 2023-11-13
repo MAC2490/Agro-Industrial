@@ -5,10 +5,10 @@
 
     include 'Conexion.php';
 
-    $list = $data_base->query("SELECT fincas.*, usuarios.nombre AS user_name, usuarios.cedula AS document FROM fincas LEFT JOIN usuarios ON fincas.id_usuario = usuarios.id_usuario");
-    $data = $list->fetchAll();
+    $consultation = $data_base->query("SELECT cedula FROM usuarios LEFT JOIN fincas ON (usuarios.id_usuario = fincas.id_usuario) WHERE rol LIKE 'ADMIN' AND fincas.id_usuario IS NULL");
+    $data = $consultation->fetchAll();
 
-    $response['list_farm'] = $data;
+    $response['admins'] = $data;
     echo json_encode($response);
     
 ?>

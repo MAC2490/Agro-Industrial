@@ -15,6 +15,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import ModuloSuperAdmin.PanelFincas;
+import Principal.Alert;
+import java.awt.Color;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class RegisterFarm extends javax.swing.JFrame {
     
@@ -23,11 +27,14 @@ public class RegisterFarm extends javax.swing.JFrame {
     private JsonArray arrayAdmins;
     private String textTitle;
     private String farm_id;
+    private String user;
+    private PanelFincas panelFincas = new PanelFincas();
     
     public RegisterFarm(String title,String name, String address, String user, String url_img, String textButton, String farm_id) {
         initComponents();
         this.textTitle = title;
         this.farm_id = farm_id;
+        this.user = user;
         this.setLocationRelativeTo(null);
         String api = apiConsumption.consumoGET("http://localhost/ApiPhp-AgroGestor/Fincas/getAdmins.php");
         JsonObject objectAdmins = JsonParser.parseString(api).getAsJsonObject();
@@ -51,14 +58,14 @@ public class RegisterFarm extends javax.swing.JFrame {
         cancel = new javax.swing.JButton();
         documentLable = new javax.swing.JLabel();
         img_save = new javax.swing.JButton();
-        admins = new javax.swing.JTextField();
+        admins = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Registar Finca");
         setAutoRequestFocus(false);
+        setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 204, 0));
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         title.setForeground(new java.awt.Color(0, 0, 0));
@@ -86,13 +93,18 @@ public class RegisterFarm extends javax.swing.JFrame {
 
         show_img.setForeground(new java.awt.Color(0, 0, 0));
 
+        register.setBackground(new java.awt.Color(153, 255, 153));
+        register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mas.png"))); // NOI18N
         register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerActionPerformed(evt);
             }
         });
 
-        cancel.setText("Cancelar");
+        cancel.setBackground(new java.awt.Color(102, 204, 0));
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atras.png"))); // NOI18N
+        cancel.setBorder(null);
+        cancel.setFocusable(false);
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
@@ -102,6 +114,7 @@ public class RegisterFarm extends javax.swing.JFrame {
         documentLable.setForeground(new java.awt.Color(0, 0, 0));
         documentLable.setText("Documento Responsable");
 
+        img_save.setBackground(new java.awt.Color(153, 255, 153));
         img_save.setText("Subir imagen");
         img_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,27 +141,25 @@ public class RegisterFarm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(farm_name, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(documentLable, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(admins, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(admins, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(img_save, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(show_img, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(17, 17, 17))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(show_img, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(register)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancel))
+                        .addGap(120, 120, 120)
+                        .addComponent(register, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
+                        .addContainerGap()
+                        .addComponent(cancel)
+                        .addGap(79, 79, 79)
                         .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -156,16 +167,13 @@ public class RegisterFarm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(img_save)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(show_img, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))
+                        .addGap(17, 17, 17)
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -177,12 +185,16 @@ public class RegisterFarm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(documentLable)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(admins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(register, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cancel))
-                        .addGap(24, 24, 24))))
+                        .addComponent(admins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(img_save)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(show_img, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(register, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,8 +240,8 @@ public class RegisterFarm extends javax.swing.JFrame {
 
                     // Aquí puedes procesar el archivo de imagen seleccionado (por ejemplo, mostrarlo en un JLabel)
                     ImageIcon imageIcon = new ImageIcon(filePath);
-                    int widtch = 200;
-                    int height = 200;
+                    int widtch = 180;
+                    int height = 180;
                     Image newImage = imageIcon.getImage().getScaledInstance(widtch, height, Image.SCALE_SMOOTH);
                     ImageIcon icon = new ImageIcon(newImage);
                     
@@ -243,42 +255,38 @@ public class RegisterFarm extends javax.swing.JFrame {
     }//GEN-LAST:event_img_saveActionPerformed
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
-        if (this.url_img == null) {
-            this.url_img = "/img/finca 1.png";
-        }
-        String id_user = this.searchIdUser(this.admins.getText());
-        if (this.textTitle.equalsIgnoreCase("Registra Finca")) {
-            if (id_user != null) {
-                Map<String, String> insertData = new HashMap<>();
-                insertData.put("name", this.farm_name.getText());
-                insertData.put("address", this.addres.getText());
-                insertData.put("url_img", this.url_img);
-                insertData.put("user", id_user);
-                String register = this.apiConsumption.consumoPOST("http://localhost/ApiPhp-AgroGestor/Fincas/InsertFarm.php", insertData);
-                System.out.println("Confirmacio: "+register);
-                PanelFincas windowFarm = new PanelFincas();
-                setVisible(false);
-                windowFarm.card();
-            }else{
-                // Alerta de que el administrador no existe
+        if (this.validatio()) {
+            if (this.url_img == null) {
+                this.url_img = "/img/finca 1.png";
             }
-        }else if(this.textTitle.equalsIgnoreCase("Editar Finca")){
-            if (id_user != null) {
-                Map<String, String> updateData = new HashMap<>();
-                updateData.put("farm_id", this.farm_id);
-                updateData.put("name", this.farm_name.getText());
-                updateData.put("address", this.addres.getText());
-                updateData.put("url_img", this.url_img);
-                updateData.put("user", id_user);
-                String register = this.apiConsumption.consumoPOST("http://localhost/ApiPhp-AgroGestor/Fincas/Update.php", updateData);
-                System.out.println("Confirmacio Editar : "+register);
-                PanelFincas windowFarm = new PanelFincas();
-                setVisible(false);
-                windowFarm.card();
-            }else{
-                // Alerta de que el administrador no existe
+            
+            String id_user = this.searchIdUser(this.admins.getSelectedItem().toString());
+            System.out.println("user slected "+ id_user);
+            if (id_user != null) { 
+                if (this.textTitle.equalsIgnoreCase("Registrar Finca")) {
+                    Map<String, String> insertData = new HashMap<>();
+                    insertData.put("name", this.farm_name.getText());
+                    insertData.put("address", this.addres.getText());
+                    insertData.put("url_img", this.url_img);
+                    insertData.put("user", id_user);
+                    String response = this.apiConsumption.consumoPOST("http://localhost/ApiPhp-AgroGestor/Fincas/InsertFarm.php", insertData);
+                    this.validateProcess(response, "register");
+                }else if(this.textTitle.equalsIgnoreCase("Editar Finca")) {
+                    Map<String, String> updateData = new HashMap<>();
+                    updateData.put("farm_id", this.farm_id);
+                    updateData.put("name", this.farm_name.getText());
+                    updateData.put("address", this.addres.getText());
+                    updateData.put("url_img", this.url_img);
+                    updateData.put("user", id_user);
+                    String response = this.apiConsumption.consumoPOST("http://localhost/ApiPhp-AgroGestor/Fincas/Update.php", updateData);
+                    System.out.println("respuesta "+response);
+                    this.validateProcess(response, "edit");
+                }
+            } else {
+                this.alert("Error", "El administrador no fue encontrado", "error");
             }
         }
+        
     }//GEN-LAST:event_registerActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
@@ -311,16 +319,109 @@ public class RegisterFarm extends javax.swing.JFrame {
     
     public String searchIdUser(String document){
         String id = null;
-        for (int i = 0; i < this.arrayAdmins.size(); i++) {
-            JsonObject dataAdmins = this.arrayAdmins.get(i).getAsJsonObject();
-            JsonElement document_usuario = dataAdmins.get("cedula");
-            if (document.equalsIgnoreCase(document_usuario.getAsString())) {
-                JsonElement id_usuario = dataAdmins.get("id_usuario");
-                id = id_usuario.getAsString();
-                break;
+        if (document.equalsIgnoreCase("Quitar Responsable") || document.equalsIgnoreCase("No tiene asignado") || document.equalsIgnoreCase("Sin Responsable")) {
+            System.out.println("document "+document);
+            id = "SA"; // Sin Administrador
+        } else{
+            for (int i = 0; i < this.arrayAdmins.size(); i++) {
+                JsonObject dataAdmins = this.arrayAdmins.get(i).getAsJsonObject();
+                JsonElement document_usuario = dataAdmins.get("cedula");
+                if (document.equalsIgnoreCase(document_usuario.getAsString())) {
+                    JsonElement id_usuario = dataAdmins.get("id_usuario");
+                    id = id_usuario.getAsString();
+                    break;
+                }
             }
         }
         return id;
+    }
+    
+    public boolean validatio(){
+        boolean status = true;
+        if (this.farm_name.getText().equalsIgnoreCase("") || this.addres.getText().equalsIgnoreCase("") || this.admins.getSelectedItem().toString().equalsIgnoreCase("")) {
+            status = false;
+            this.alert("Campos vacios", "Todos los campos son obligatorios", "error");
+        }
+        
+        Border border = new LineBorder(Color.RED, 2);
+        if (this.farm_name.getText().equalsIgnoreCase("")) {
+            this.farm_name.setBorder(border);
+        }else{
+            status = true;
+            this.farm_name.setBorder(null);
+        }
+        
+        if (this.addres.getText().equalsIgnoreCase("")) {
+            this.addres.setBorder(border);
+        }else{
+            status = true;
+            this.addres.setBorder(null);
+        }
+        
+        if (this.admins.getSelectedItem().toString().equalsIgnoreCase("")) {
+            this.admins.setBorder(border);
+        }else{
+            status = true;
+            this.admins.setBorder(null);
+        }
+        return status;
+    } 
+    
+    public void searchAdmins(){
+        String response = this.apiConsumption.consumoGET("http://localhost/ApiPhp-AgroGestor/Fincas/getUserAdmins.php");
+        
+        JsonObject objectAdmins = JsonParser.parseString(response).getAsJsonObject();
+        JsonArray arrayAdmins = objectAdmins.get("admins").getAsJsonArray();
+        
+        if (this.textTitle.equals("Editar Finca") && !this.user.equals("No tiene asignado")) {
+            this.admins.addItem("Quitar Responsable");
+        }else if(this.textTitle.equals("Registrar Finca")){
+            this.admins.addItem("Sin Responsable");
+        }
+        if (arrayAdmins.size() != 0) {
+            for (int i = 0; i < arrayAdmins.size(); i++) {
+                JsonObject objectDocumen = arrayAdmins.get(i).getAsJsonObject();
+                JsonElement document = objectDocumen.get("cedula");
+                this.admins.addItem(document.getAsString());
+            }
+        }else if (this.textTitle.equals("Registrar Finca")){
+            this.admins.addItem("Sin respuesta");
+            this.admins.setSelectedItem("Sin respuesta");
+        }  
+    }
+    
+    public void alert(String title, String mesage, String type){
+        Alert alert = new Alert(title, mesage, type);
+    }
+    
+    public void validateProcess(String response, String type){
+        System.out.println("response "+ response + " type "+ type);
+        if (type.equals("register")) {
+            if (response.equals("100")) {
+                System.out.println("01");
+                this.panelFincas.initAleterComponents();
+                this.alert("Registro", "La finca se registro correctamente", "success");
+                setVisible(false);
+            }else if(response.equalsIgnoreCase("500")){
+                this.alert("Error", "No se pudo registrar la finca", "error");
+            }else if(response.equalsIgnoreCase("300")){
+                this.alert("Error", "El servido fallo", "error");
+            }else if(response.equalsIgnoreCase("404")){
+                this.alert("Error", "Los datos estan vacios", "error");
+            }
+        } else {
+            if (response.equalsIgnoreCase("100")) {
+                this.panelFincas.initAleterComponents();
+                this.alert("Registro", "La finca se edito correctamente", "success");
+                setVisible(false);
+            }else if(response.equalsIgnoreCase("500")){
+                this.alert("Error", "No se pudo registrar la finca", "error");
+            }else if(response.equalsIgnoreCase("300")){
+                this.alert("Error", "El servido fallo", "error");
+            }else if(response.equalsIgnoreCase("404")){
+                this.alert("Error", "Los datos estan vacios", "error");
+            }    
+        }
     }
     
     public void data(String title,String name, String address, String user, String url_img, String textButton){
@@ -328,11 +429,29 @@ public class RegisterFarm extends javax.swing.JFrame {
         this.register.setText(textButton);
         this.farm_name.setText(name);
         this.addres.setText(address);
-        this.admins.setText(user);
+        
+        if (!user.isEmpty()) {
+            admins.addItem(user);
+        }
+        this.admins.setSelectedItem(user);
+        ImageIcon img = new ImageIcon();
+        String url = "";
+        if ("/img/finca 1.png".equals(url_img)) {
+            img = new ImageIcon(getClass().getResource("/img/finca 1.png"));
+        }else{
+            img = new ImageIcon(url_img);
+        }
+        
+        int widtch = 180;
+        int height = 180;
+        Image newImage = img.getImage().getScaledInstance(widtch, height, Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(newImage);
+        this.show_img.setIcon(icon);
+        this.searchAdmins();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addres;
-    private javax.swing.JTextField admins;
+    private javax.swing.JComboBox<String> admins;
     private javax.swing.JButton cancel;
     private javax.swing.JLabel documentLable;
     private javax.swing.JTextField farm_name;

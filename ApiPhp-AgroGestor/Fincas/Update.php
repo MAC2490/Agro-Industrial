@@ -6,50 +6,36 @@
     include 'Conexion.php';
 
     if ( !empty($_POST['farm_id']) and !empty($_POST['name']) and !empty($_POST['address']) and !empty($_POST['user']) and !empty($_POST['url_img']) ) {
-
+        $id = $_POST['farm_id'];
         $name = $_POST['name'];
         $address = $_POST['address'];
         $user = $_POST['user'];
         $img_url = $_POST['url_img'];
-
         try {
-            $consultation = $data_base->prepare("UPDATE fincas SET nombre = :nam, direccion = :addr, img = :img, id_usuario = :user ");
-
-            $consultation->bindParam(':nam', $name);
-            $consultation->bindParam(':addr', $address);
-            $consultation->bindParam(':user', $user);
-            $consultation->bindParam(':img', $img_url);
+            if ($user == "SA") {
+                $consultation = $data_base->prepare("UPDATE fincas SET nombre = :nam, direccion = :addr, img = :img, id_usuario = null WHERE id_finca = $id");   
+                $consultation->bindParam(':nam', $name);
+                $consultation->bindParam(':addr', $address);
+                $consultation->bindParam(':img', $img_url);
+            }else{
+                $consultation = $data_base->prepare("UPDATE fincas SET nombre = :nam, direccion = :addr, img = :img, id_usuario = :user WHERE id_finca = $id");
+                $consultation->bindParam(':nam', $name);
+                $consultation->bindParam(':addr', $address);
+                $consultation->bindParam(':user', $user);
+                $consultation->bindParam(':img', $img_url);
+            }
             
             $prossessed = $consultation->execute();
 
             if( $prossessed ){
-                $response = [
-                                'status' => true,
-                                'mesagge' => "OK##CLIENT##UPDATE"
-                            ];
-                echo json_encode($response);
+                echo json_encode(100); // Se registro correcramente
             }else{
-                $response = [
-                                'status' => false,
-                                'mesagge' => "ERROR##CLIENT##UPDATE"
-                              ];
-                echo json_encode($response);
+                echo json_encode(500); // No se pudo registrar
             }
         } catch (Exception $e) {
-            $response = [
-                            'status' => false,
-                            'mesagge' => "ERROR##SQL",
-                            'exception' => $e
-                          ];
-            echo json_encode($response);
+            echo json_encode(300); // Error de base de datos
         }
     }else{
-        $response = [
-                        'status' => false,
-                        'mesagge' => "ERROR##DATOS##POST",
-                        '$_GET' => $_GET,
-                        '$_POST' => $_POST
-                      ];
-        echo json_encode($response);
+        echo json_encode(404); // Datos vacios
     }
 ?>

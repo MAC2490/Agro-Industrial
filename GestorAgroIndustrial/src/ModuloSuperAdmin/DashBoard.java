@@ -60,8 +60,8 @@ public class DashBoard extends javax.swing.JFrame {
         etqRol = new javax.swing.JLabel();
         PanelPrincipal = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DashBoard SuperAdmin - Gestor AgroIndustrial");
+        setUndecorated(true);
         setResizable(false);
 
         PanelHeaderB.setBackground(new java.awt.Color(0, 0, 0));
