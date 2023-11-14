@@ -10,6 +10,7 @@ public class formularioInsertar extends javax.swing.JPanel {
     boolean modoEdicion = false;
     String id = "";
     int i = 0;
+    
     public formularioInsertar() {
         consumoAPI = new ConsumoAPI();
         initComponents();

@@ -6,12 +6,16 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -20,42 +24,25 @@ import javax.swing.border.LineBorder;
 public class PanelCultivos extends javax.swing.JPanel {
 
     private ConsumoAPI consumoAPI;
-    formularioInsertar formulario = new formularioInsertar();
-    private JButton editar = new JButton();
+    private FormInsert formulario;
+    //private JButton editar = new JButton();
 
     public PanelCultivos() {
         consumoAPI = new ConsumoAPI();
         initComponents();
         mostrarCultivos();
+        formulario = new FormInsert(); // Inicializa el formulario
     }
-
-    Color[] colores = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE, Color.PINK};
-
-    /*private void mostrarFormulario() {
-        // Crear una instancia del formularioInsertar
-        
-        abrirFormulario(formulario);
-
-        // Crear un diálogo para mostrar el formulario
-        JDialog dialog = new JDialog();
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.getContentPane().add(formulario);
-        dialog.pack();
-        dialog.setLocationRelativeTo(null); // Centrar el diálogo en la pantalla
-        dialog.setVisible(true);
-    }*/
-
-    
 
     public void mostrarCultivos() {
         // URL de la API para obtener los datos de los cultivos
         String apiUrl = "http://localhost/ApiPhp-AgroGestor/cultivos/Obtener.php";
 
-        // Realizar la solicitud GET a la API
+        //solicitud GET a la API
         ConsumoAPI api = new ConsumoAPI();
         String jsonData = api.consumoGET(apiUrl);
 
-        // Crear un objeto Gson para procesar el JSON
+        // objeto Gson para procesar el JSON
         Gson gson = new Gson();
 
         // Convertir el JSON en un JsonObject
@@ -70,7 +57,7 @@ public class PanelCultivos extends javax.swing.JPanel {
         //3 columnas, filas automaticas
         contenedor1.setLayout(new GridLayout(0, 3));
         //color perzonalido
-        Color colorPersonalizado = new Color(255, 255, 153);
+        Color colorPersonalizado = new Color(255, 255, 255);
 
         // Recorrer la matriz de registros
         for (int i = 0; i < registrosArray.size(); i++) {
@@ -81,20 +68,23 @@ public class PanelCultivos extends javax.swing.JPanel {
             JsonElement tiempoCosecha = objeto.get("tiempo_cosecha");
             JsonElement estado = objeto.get("estado");
 
-            //biutton editar
-            this.editar = new JButton("Editar");
+            //button editar
+            JButton editar = new JButton("Editar");
+            
+            
+            Color ColorBtnEditar = Color.decode("#4BC8FF");
+            editar.setBackground(ColorBtnEditar);
 
             //evento
-            this.editar.addActionListener(new ActionListener() {
+            editar.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                     // Obtén los valores de nombre, descripción, tiempoCosecha y estado correspondientes a esta tarjeta
                     String nombreEditar = nombre.getAsString();
                     String descripcionEditar = descripcion.getAsString();
                     String tiempoCosechaEditar = tiempoCosecha.getAsString();
                     String estadoEditar = estado.getAsString();
-                    
-                    
-                    formulario.setDatos(id.getAsString() ,nombreEditar, descripcionEditar, tiempoCosechaEditar, estadoEditar);
+
+                    formulario.setDatos(id.getAsString(), nombreEditar, descripcionEditar, tiempoCosechaEditar, estadoEditar);
                     abrirFormulario(formulario);
                 }
             });
@@ -104,6 +94,7 @@ public class PanelCultivos extends javax.swing.JPanel {
             cardPanel.setLayout(new BoxLayout(cardPanel, BoxLayout.Y_AXIS));
             //cardPanel.setBackground(Color.WHITE);
             cardPanel.setBackground(colorPersonalizado);
+            cardPanel.setBorder(new EmptyBorder(3, 4, 30, 1));
             //borde
             cardPanel.setBorder(new LineBorder(Color.BLACK, 1));
 
@@ -132,25 +123,14 @@ public class PanelCultivos extends javax.swing.JPanel {
         }
     }
 
-    // Método para abrir el formulario
-    private void abrirFormulario(JPanel formulario) {
-        JDialog dialog = new JDialog();
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.getContentPane().add(formulario);
-        dialog.pack();
-        dialog.setLocationRelativeTo(null);
-        dialog.setVisible(true);
-        bloquearBtn(true);
-    }
+    private void abrirFormulario(FormInsert formulario) {
 
-    public void bloquearBtn(boolean permitir){
-        /*if (permitir) {
-            this.registrar.setEnabled(false);
-            this.editar.setEnabled(false);
-        }else{
-            this.registrar.setEnabled(false);
-            this.editar.setEnabled(false);
-        }*/
+        formulario.setLocationRelativeTo(null);
+
+        formulario.setVisible(true);
+        formulario.addWindowListener(new WindowAdapter() {
+
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -160,18 +140,23 @@ public class PanelCultivos extends javax.swing.JPanel {
         registrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         contenedor1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 204));
+        setBackground(new java.awt.Color(204, 204, 204));
 
-        registrar.setBackground(new java.awt.Color(0, 153, 0));
-        registrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        registrar.setForeground(new java.awt.Color(255, 255, 255));
-        registrar.setText("Registrar");
+        registrar.setBackground(new java.awt.Color(153, 255, 51));
+        registrar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        registrar.setForeground(new java.awt.Color(51, 51, 51));
+        registrar.setText("REGISTRAR CULTIVO");
+        registrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        registrar.setFocusable(false);
         registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarActionPerformed(evt);
             }
         });
+
+        contenedor1.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout contenedor1Layout = new javax.swing.GroupLayout(contenedor1);
         contenedor1.setLayout(contenedor1Layout);
@@ -181,39 +166,47 @@ public class PanelCultivos extends javax.swing.JPanel {
         );
         contenedor1Layout.setVerticalGroup(
             contenedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
+            .addGap(0, 355, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(contenedor1);
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("GESTION DE CULTIVOS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(558, Short.MAX_VALUE)
-                .addComponent(registrar)
-                .addGap(17, 17, 17))
             .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(registrar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-        this.formulario.setDatos("" ,"", "", "", "");
+        this.formulario.setDatos("", "", "", "", "");
         this.abrirFormulario(formulario);
     }//GEN-LAST:event_registrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenedor1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton registrar;
     // End of variables declaration//GEN-END:variables

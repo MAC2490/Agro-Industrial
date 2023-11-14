@@ -90,7 +90,7 @@ public class Login extends javax.swing.JFrame {
 
         campo_documento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         campo_documento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campo_documento.setText("1088238440");
+        campo_documento.setText("1");
         campo_documento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_documentoActionPerformed(evt);
@@ -103,7 +103,7 @@ public class Login extends javax.swing.JFrame {
 
         campo_password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         campo_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campo_password.setText("67890");
+        campo_password.setText("1");
 
         btnIngresar.setBackground(new java.awt.Color(153, 255, 51));
         btnIngresar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
