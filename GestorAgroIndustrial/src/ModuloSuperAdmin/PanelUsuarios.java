@@ -2,9 +2,10 @@
 package ModuloSuperAdmin;
 
 
-import clases.*;
+import Clases.*;
 import ModuloSuperAdmin.RecursosAdmins.*;
 import Principal.ConsumoAPI;
+import clases.Persona;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
