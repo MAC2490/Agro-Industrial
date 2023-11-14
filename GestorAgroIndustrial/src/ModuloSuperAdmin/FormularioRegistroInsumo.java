@@ -1,7 +1,7 @@
 package ModuloSuperAdmin;
 
 import Clases.insumos;
-import Principal.Alert;
+import Principal.AlertAlberth;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.util.HashMap;
@@ -302,14 +302,14 @@ public class FormularioRegistroInsumo extends javax.swing.JFrame {
                 this.ventana.initAlternComponents();
                 this.ventana.setVisible(true);
                 dispose();
-                Alert alerta = new Alert("Insertado con exito", "Insumo registrado con exito", "success");
+                AlertAlberth alerta = new AlertAlberth("Insertado con exito", "Insumo registrado con exito", "success");
             } else {
                 System.out.println("Faltan campos por llenas");
-                Alert alerta = new Alert("Campos Vacios", "Todos los campos son obligatorios", "warning");
+                AlertAlberth alerta = new AlertAlberth("Campos Vacios", "Todos los campos son obligatorios", "warning");
                 validarInputs();
             }
         } else {
-            Alert alerta = new Alert("Serial Duplicado", "El serial ya existe en la base de datos", "error");
+            AlertAlberth alerta = new AlertAlberth("Serial Duplicado", "El serial ya existe en la base de datos", "error");
 
         }
     }//GEN-LAST:event_registrarActionPerformed

@@ -10,12 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-public class Alert extends javax.swing.JFrame {
+public class AlertAlberth extends javax.swing.JFrame {
 
     insumos[] insumo = null;
     
 
-    public Alert(String titulo, String mensaje, String tipo) {
+    public AlertAlberth(String titulo, String mensaje, String tipo) {
         initComponents();
 
         String textoIcono = "";

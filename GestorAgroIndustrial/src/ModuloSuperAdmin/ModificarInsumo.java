@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import Clases.insumos;
 import ModuloSuperAdmin.PanelInsumos;
-import Principal.Alert;
+import Principal.AlertAlberth;
 import Principal.ConsumoAPI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -336,12 +336,12 @@ public class ModificarInsumo extends javax.swing.JFrame {
             ventana.setVisible(true);
             //aqui se destruye una vez guarde los cambios
             // manndamos mensaje de que se insertaron con exito 
-            Alert alerta = new Alert("Actualizado", "Datos actualizados con exito", "success");
+            AlertAlberth alerta = new AlertAlberth("Actualizado", "Datos actualizados con exito", "success");
             dispose();
         } else {
             System.out.println("Campos vacios");
             //mandamos mensaje de alerta 
-            Alert alerta = new Alert("Campos vacios", "Todos los campos son obligatorios", "warning");
+            AlertAlberth alerta = new AlertAlberth("Campos vacios", "Todos los campos son obligatorios", "warning");
 
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
