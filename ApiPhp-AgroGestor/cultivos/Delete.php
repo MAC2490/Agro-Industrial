@@ -5,18 +5,14 @@
     
     include 'Conexion.php';
 
-    if (!empty($_POST['cedula'])) {
+    if (!empty($_POST['id_cultivo'])) {
 
-        $documento = $_POST['cedula'];
+        $id_cultivo = $_POST['id_cultivo'];
         
         try {
-<<<<<<< HEAD
-            $consulta = $base_de_datos->prepare("DELETE FROM usuarios WHERE cedula = :doc ");
-=======
-            $consulta = $base_de_datos->prepare("DELETE FROM personas WHERE cedula = :doc ");
->>>>>>> origin/dev03
+            $consulta = $base_de_datos->prepare("DELETE FROM cultivos WHERE id_cultivo = :id ");
 
-            $consulta->bindParam(':doc', $documento);
+            $consulta->bindParam(':id', $id_cultivo);
             $proceso = $consulta->execute();
 
             if( $proceso ){

@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/marbyluci/Desktop/GestorAgroIndustrial/src/ModuloAdmin/PanelPerfil.java</file>
+=======
+            <file>file:/C:/Users/sg830/OneDrive/Escritorio/clone/Agro-Industrial/GestorAgroIndustrial/src/Principal/AlertGarcia.java</file>
+            <file>file:/C:/Users/sg830/OneDrive/Escritorio/clone/Agro-Industrial/GestorAgroIndustrial/src/ModuloSuperAdmin/PanelCultivos.java</file>
+            <file>file:/C:/Users/sg830/OneDrive/Escritorio/clone/Agro-Industrial/GestorAgroIndustrial/src/ModuloSuperAdmin/FormInsert.java</file>
+>>>>>>> origin/dev03
         </group>
     </open-files>
 </project-private>
