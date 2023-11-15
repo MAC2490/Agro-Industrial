@@ -5,11 +5,7 @@
 
     include 'Conexion.php';
 
-<<<<<<< HEAD
     $consulta = $base_de_datos->query("SELECT * FROM usuarios");
-=======
-    $consulta = $base_de_datos->query("SELECT * FROM personas");
->>>>>>> origin/dev03
     $datos = $consulta->fetchAll();
 
     $respuesta['registros'] = $datos;

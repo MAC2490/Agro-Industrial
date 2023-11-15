@@ -5,7 +5,6 @@
     
     include 'Conexion.php';
 
-<<<<<<< HEAD
     if (!empty($_POST['cedula']) and !empty($_POST['nombre']) and !empty($_POST['apellido']) ) {
 
         $cedula = $_POST['cedula'];
@@ -24,26 +23,6 @@
             $consulta->bindParam(':est', $estado);
             $consulta->bindParam(':rol', $rol);
             $consulta->bindParam(':pass', $password);
-=======
-    if (!empty($_POST['cedula']) and !empty($_POST['nombres']) and !empty($_POST['apellidos']) ) {
-
-        $documento = $_POST['cedula'];
-        $nombres = $_POST['nombres'];
-        $apellidos = $_POST['apellidos'];
-        $telefono = $_POST['telefono'];
-        $direccion = $_POST['direccion'];
-        $email = $_POST['email'];
-
-        try {
-            $consulta = $base_de_datos->prepare("INSERT INTO personas (cedula, nombres, apellidos, telefono, direccion, email) VALUES(:doc, :nom, :ape, :tel, :dir, :ema) ");
-
-            $consulta->bindParam(':doc', $documento);
-            $consulta->bindParam(':nom', $nombres);
-            $consulta->bindParam(':ape', $apellidos);
-            $consulta->bindParam(':tel', $telefono);
-            $consulta->bindParam(':dir', $direccion);
-            $consulta->bindParam(':ema', $email);
->>>>>>> origin/dev03
             
             $proceso = $consulta->execute();
 
