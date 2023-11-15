@@ -6,10 +6,14 @@
     include 'Conexion.php';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     $consulta = $base_de_datos->query("SELECT * FROM usuarios");
 =======
     $consulta = $base_de_datos->query("SELECT * FROM personas");
 >>>>>>> origin/dev03
+=======
+    $consulta = $base_de_datos->query("SELECT * FROM personas");
+>>>>>>> origin/dev04
     $datos = $consulta->fetchAll();
 
     $respuesta['registros'] = $datos;

@@ -11,10 +11,14 @@
         
         try {
 <<<<<<< HEAD
+<<<<<<< HEAD
             $consulta = $base_de_datos->prepare("DELETE FROM usuarios WHERE cedula = :doc ");
 =======
             $consulta = $base_de_datos->prepare("DELETE FROM personas WHERE cedula = :doc ");
 >>>>>>> origin/dev03
+=======
+            $consulta = $base_de_datos->prepare("DELETE FROM personas WHERE cedula = :doc ");
+>>>>>>> origin/dev04
 
             $consulta->bindParam(':doc', $documento);
             $proceso = $consulta->execute();

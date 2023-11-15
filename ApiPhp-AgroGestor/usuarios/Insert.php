@@ -6,6 +6,7 @@
     include 'Conexion.php';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (!empty($_POST['cedula']) and !empty($_POST['nombre']) and !empty($_POST['apellido']) ) {
 
         $cedula = $_POST['cedula'];
@@ -25,6 +26,8 @@
             $consulta->bindParam(':rol', $rol);
             $consulta->bindParam(':pass', $password);
 =======
+=======
+>>>>>>> origin/dev04
     if (!empty($_POST['cedula']) and !empty($_POST['nombres']) and !empty($_POST['apellidos']) ) {
 
         $documento = $_POST['cedula'];
@@ -43,7 +46,10 @@
             $consulta->bindParam(':tel', $telefono);
             $consulta->bindParam(':dir', $direccion);
             $consulta->bindParam(':ema', $email);
+<<<<<<< HEAD
 >>>>>>> origin/dev03
+=======
+>>>>>>> origin/dev04
             
             $proceso = $consulta->execute();
 
