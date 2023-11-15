@@ -7,8 +7,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import Clases.*;
 import Principal.Alert;
-import Clases.ButtonEditor;
-import Clases.ButtonRenderer;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import java.awt.*;

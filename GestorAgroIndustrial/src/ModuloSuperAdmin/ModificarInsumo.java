@@ -7,6 +7,9 @@ import Clases.insumos;
 import ModuloSuperAdmin.PanelInsumos;
 import Principal.Alert;
 import Principal.ConsumoAPI;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -380,7 +383,18 @@ public class ModificarInsumo extends javax.swing.JFrame {
         this.tipoM.setText(insumo.getTipo_insumo());
         this.unindadM.setText(insumo.getUnidada_medida());
         this.cantidadM.setText(insumo.getCantidad());
-        // la fecha no se la agrege porq el se la pone cuando va a actualizar
+        // el try es para el manejo de errores por si el formato ingresado no es una  fecha correcta toca manejarlo bin
+        try {
+            // Formato de la cadena de fecha
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+            // Parsear la cadena a un objeto Date
+            Date fechaDate = formatoFecha.parse(insumo.getFecha_compra());
+            // Establecer la fecha en el JDateChooser
+            this.fecha.setDate(fechaDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            // Manejar la excepción de formato de fecha incorrecto
+        }
         this.costoM.setText(insumo.getCosto_compra());
         this.provedorM.setText(insumo.getProveedor());
     }

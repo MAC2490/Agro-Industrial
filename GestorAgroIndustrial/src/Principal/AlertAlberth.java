@@ -3,9 +3,8 @@ package Principal;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public class Alert extends javax.swing.JFrame {
+public class AlertAlberth extends javax.swing.JFrame {
 
-    
     public Alert(String titulo, String mensaje, String tipo) {
         initComponents();
         initAlternComponents();
