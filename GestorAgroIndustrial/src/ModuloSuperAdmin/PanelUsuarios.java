@@ -2,6 +2,8 @@
 package ModuloSuperAdmin;
 
 
+import Clases.ButtonEditor;
+import Clases.ButtonRenderer;
 import clases.*;
 import ModuloSuperAdmin.RecursosAdmins.*;
 import Principal.ConsumoAPI;
@@ -143,9 +145,8 @@ public class PanelUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarUserActionPerformed
 
     public void cargarDatos() {
-        String select = ejemplo.consumoGET("http://localhost/ApiPhp-AgroGestor/usuarios/Obtener.php"); 
-        System.out.println("01 "+select);
-        /*JsonObject jsonObject = JsonParser.parseString(select).getAsJsonObject();
+        String select = ejemplo.consumoGET("http://localhost/ApiPhp-AgroGestor/usuarios/Obtener.php");
+        JsonObject jsonObject = JsonParser.parseString(select).getAsJsonObject();
         JsonArray registros = jsonObject.getAsJsonArray("registros");
         List<Persona> personas = new ArrayList<>();
         
@@ -203,7 +204,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
             fila[7] = btn_editar;
             fila[8] = btn_eliminar;
             modelo.addRow(fila);
-        }*/
+        }
     }
 
     public void initAlternComponents(){
