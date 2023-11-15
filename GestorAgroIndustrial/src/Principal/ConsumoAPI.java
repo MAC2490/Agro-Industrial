@@ -10,7 +10,8 @@ import java.util.Map;
 
 public class ConsumoAPI {
     
-    
+    public ConsumoAPI(){
+    }
     
     public String consumoGET(String endpoint){
         try {

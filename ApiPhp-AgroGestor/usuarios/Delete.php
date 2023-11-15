@@ -10,7 +10,7 @@
         $documento = $_POST['cedula'];
         
         try {
-            $consulta = $base_de_datos->prepare("DELETE FROM personas WHERE cedula = :doc ");
+            $consulta = $base_de_datos->prepare("DELETE FROM usuarios WHERE cedula = :doc ");
 
             $consulta->bindParam(':doc', $documento);
             $proceso = $consulta->execute();

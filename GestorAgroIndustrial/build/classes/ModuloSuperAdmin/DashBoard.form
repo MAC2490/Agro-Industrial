@@ -78,7 +78,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="SessionUsuario" min="-2" max="-2" attributes="0"/>
+                          <Component id="etqSessionUsuario" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="etqGestor" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -96,7 +96,7 @@
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="etqGestor" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="SessionUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqSessionUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="etqAgroIndustrial" min="-2" max="-2" attributes="0"/>
@@ -135,7 +135,7 @@
             <Property name="text" type="java.lang.String" value="AGRO-INDUSTRIAL"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="SessionUsuario">
+        <Component class="javax.swing.JLabel" name="etqSessionUsuario">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -243,6 +243,9 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPerfilActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="separador">
           <Properties>
