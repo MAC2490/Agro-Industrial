@@ -2,20 +2,29 @@ package Principal;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import Clases.insumos;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 public class AlertAlberth extends javax.swing.JFrame {
 
-    public Alert(String titulo, String mensaje, String tipo) {
+    insumos[] insumo = null;
+    
+
+    public AlertAlberth(String titulo, String mensaje, String tipo) {
         initComponents();
-        initAlternComponents();
-        
+
         String textoIcono = "";
         if (tipo.equals("success")) {
             textoIcono = "verificado.gif";
-        } else if (tipo.equals("warning")) {
-            textoIcono = "warning.gif";
         } else if (tipo.equals("error")) {
-            textoIcono = "error.gif";
+            textoIcono = "warning.gif";
+        } else if (tipo.equals("warning")) {
+            textoIcono = "giphy.gif";
         }
 
         ImageIcon gifIcon = new ImageIcon(ClassLoader.getSystemResource("Gif/" + textoIcono));
@@ -28,6 +37,7 @@ public class AlertAlberth extends javax.swing.JFrame {
         setVisible(true);
     }
 
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,30 +51,25 @@ public class AlertAlberth extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        contentPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-
-        etqTitulo.setBackground(new java.awt.Color(255, 255, 255));
         etqTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqTitulo.setText("XXXXXx");
         etqTitulo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         etqTitulo.setOpaque(true);
 
-        etqImagen.setBackground(new java.awt.Color(255, 255, 255));
         etqImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqImagen.setOpaque(true);
 
-        etqMensaje.setBackground(new java.awt.Color(255, 255, 255));
         etqMensaje.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         etqMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqMensaje.setText("XXXXXXXXXXXXxxx");
         etqMensaje.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         etqMensaje.setOpaque(true);
 
-        btnAceptar.setBackground(new java.awt.Color(234, 234, 234));
+        btnAceptar.setBackground(new java.awt.Color(0, 0, 102));
         btnAceptar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAceptar.setText("ACEPTAR");
-        btnAceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptar.setText("Aceptar");
         btnAceptar.setFocusable(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,30 +81,31 @@ public class AlertAlberth extends javax.swing.JFrame {
         contentPrincipal.setLayout(contentPrincipalLayout);
         contentPrincipalLayout.setHorizontalGroup(
             contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etqImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqMensaje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(contentPrincipalLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(102, 102, 102))
+            .addGroup(contentPrincipalLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(etqImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         contentPrincipalLayout.setVerticalGroup(
             contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(etqImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etqTitulo)
-                .addGap(9, 9, 9)
-                .addComponent(etqMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(contentPrincipalLayout.createSequentialGroup()
+                        .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(etqMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(etqImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,8 +121,8 @@ public class AlertAlberth extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(contentPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,9 +132,6 @@ public class AlertAlberth extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
-    public void initAlternComponents(){
-        setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JPanel contentPrincipal;
