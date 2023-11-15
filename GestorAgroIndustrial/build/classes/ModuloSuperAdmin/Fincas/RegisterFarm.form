@@ -60,14 +60,9 @@
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="farm_name" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="documentLable" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
-                              <Component id="admins" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="farm_name" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="documentLable" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="admins" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">

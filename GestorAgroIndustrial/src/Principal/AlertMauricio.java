@@ -1,4 +1,4 @@
-package Principal;
+    package Principal;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-public class Alert extends javax.swing.JFrame {
-    public Alert(String titulo, String mensaje, String tipo) {
+public class AlertMauricio extends javax.swing.JFrame {
+    public AlertMauricio(String titulo, String mensaje, String tipo) {
         initComponents();
 
         String textoIcono = "";
