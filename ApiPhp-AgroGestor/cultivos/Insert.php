@@ -5,45 +5,20 @@
     
     include 'Conexion.php';
 
-<<<<<<< HEAD
-    if (!empty($_POST['cedula']) and !empty($_POST['nombre']) and !empty($_POST['apellido']) ) {
+    if (!empty($_POST['nombre']) and !empty($_POST['descripcion']) and !empty($_POST['tiempoCosecha'] and !empty($_POST['estado'])) ) {
 
-        $cedula = $_POST['cedula'];
         $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
+        $descripcion = $_POST['descripcion'];
+        $tiempoCosecha = $_POST['tiempoCosecha'];
         $estado = $_POST['estado'];
-        $rol = $_POST['rol'];
-        $password = $_POST['password'];
 
         try {
-            $consulta = $base_de_datos->prepare("INSERT INTO usuarios (cedula, nombre, apellido, estado, rol, password) VALUES(:doc, :nom, :ape, :est, :rol, :pass) ");
+            $consulta = $base_de_datos->prepare("INSERT INTO cultivos ( nombre, descripcion, tiempo_cosecha, estado) VALUES(:nom, :descr, :tiemp, :esta) ");
 
-            $consulta->bindParam(':doc', $cedula);
             $consulta->bindParam(':nom', $nombre);
-            $consulta->bindParam(':ape', $apellido);
-            $consulta->bindParam(':est', $estado);
-            $consulta->bindParam(':rol', $rol);
-            $consulta->bindParam(':pass', $password);
-=======
-    if (!empty($_POST['cedula']) and !empty($_POST['nombres']) and !empty($_POST['apellidos']) ) {
-
-        $documento = $_POST['cedula'];
-        $nombres = $_POST['nombres'];
-        $apellidos = $_POST['apellidos'];
-        $telefono = $_POST['telefono'];
-        $direccion = $_POST['direccion'];
-        $email = $_POST['email'];
-
-        try {
-            $consulta = $base_de_datos->prepare("INSERT INTO personas (cedula, nombres, apellidos, telefono, direccion, email) VALUES(:doc, :nom, :ape, :tel, :dir, :ema) ");
-
-            $consulta->bindParam(':doc', $documento);
-            $consulta->bindParam(':nom', $nombres);
-            $consulta->bindParam(':ape', $apellidos);
-            $consulta->bindParam(':tel', $telefono);
-            $consulta->bindParam(':dir', $direccion);
-            $consulta->bindParam(':ema', $email);
->>>>>>> origin/dev03
+            $consulta->bindParam(':descr', $descripcion);
+            $consulta->bindParam(':tiemp', $tiempoCosecha);
+            $consulta->bindParam(':esta', $estado);
             
             $proceso = $consulta->execute();
 
