@@ -33,7 +33,7 @@ public class DashBoard extends javax.swing.JFrame {
         JsonObject jsonObject = gson.fromJson(SesionUsuario, JsonObject.class);
         String nombreUsuario = jsonObject.get("nombre").getAsString();
         SessionUsuario.setText(nombreUsuario);
-        
+        this.panelDefecto();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -319,6 +319,10 @@ public class DashBoard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradoresActionPerformed
+        this.panelDefecto();
+    }//GEN-LAST:event_btnAdministradoresActionPerformed
+    
+    public void panelDefecto(){
         PanelPrincipal.removeAll();
         
         PanelUsuarios temporal = new PanelUsuarios();
@@ -327,9 +331,8 @@ public class DashBoard extends javax.swing.JFrame {
         PanelPrincipal.add(temporal);
         repaint();
         revalidate();
-       
-    }//GEN-LAST:event_btnAdministradoresActionPerformed
-
+    }
+    
     private void btnCerrarSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSessionActionPerformed
         dispose();
         this.ventanaLogin.setVisible(true);
