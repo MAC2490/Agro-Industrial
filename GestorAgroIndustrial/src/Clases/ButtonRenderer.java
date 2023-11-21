@@ -1,4 +1,4 @@
-package clases;
+package Clases;
 
 import java.awt.Component;
 import javax.swing.JTable;

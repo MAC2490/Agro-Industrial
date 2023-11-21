@@ -4,7 +4,6 @@
     header("Access-Control-Allow-Headers: Content-Type");
     
     include 'Conexion.php';
-
     if (!empty($_POST['cedula']) and !empty($_POST['nombre']) and !empty($_POST['apellido']) ) {
 
         $cedula = $_POST['cedula'];
@@ -23,7 +22,7 @@
             $consulta->bindParam(':est', $estado);
             $consulta->bindParam(':rol', $rol);
             $consulta->bindParam(':pass', $password);
-            
+
             $proceso = $consulta->execute();
 
             if( $proceso ){

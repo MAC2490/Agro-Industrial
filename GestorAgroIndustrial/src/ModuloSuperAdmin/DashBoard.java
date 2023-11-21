@@ -32,8 +32,8 @@ public class DashBoard extends javax.swing.JFrame {
         
         JsonObject jsonObject = gson.fromJson(SesionUsuario, JsonObject.class);
         String nombreUsuario = jsonObject.get("nombre").getAsString();
-        etqSessionUsuario.setText(nombreUsuario);
-        
+        SessionUsuario.setText(nombreUsuario);
+        this.panelDefecto();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -43,7 +43,7 @@ public class DashBoard extends javax.swing.JFrame {
         LogoGestor = new javax.swing.JLabel();
         etqGestor = new javax.swing.JLabel();
         etqAgroIndustrial = new javax.swing.JLabel();
-        etqSessionUsuario = new javax.swing.JLabel();
+        SessionUsuario = new javax.swing.JLabel();
         panelSideBar = new javax.swing.JPanel();
         btnAdministradores = new javax.swing.JButton();
         btnFincas = new javax.swing.JButton();
@@ -60,8 +60,8 @@ public class DashBoard extends javax.swing.JFrame {
         etqRol = new javax.swing.JLabel();
         PanelPrincipal = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("DashBoard SuperAdmin - Gestor AgroIndustrial");
+        setUndecorated(true);
         setResizable(false);
 
         PanelHeaderB.setBackground(new java.awt.Color(0, 0, 0));
@@ -76,10 +76,10 @@ public class DashBoard extends javax.swing.JFrame {
         etqAgroIndustrial.setForeground(new java.awt.Color(255, 255, 255));
         etqAgroIndustrial.setText("AGRO-INDUSTRIAL");
 
-        etqSessionUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        etqSessionUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        etqSessionUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        etqSessionUsuario.setText("Usuario");
+        SessionUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        SessionUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        SessionUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        SessionUsuario.setText("Usuario");
 
         javax.swing.GroupLayout PanelHeaderBLayout = new javax.swing.GroupLayout(PanelHeaderB);
         PanelHeaderB.setLayout(PanelHeaderBLayout);
@@ -92,7 +92,7 @@ public class DashBoard extends javax.swing.JFrame {
                         .addComponent(etqAgroIndustrial))
                     .addGroup(PanelHeaderBLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(etqSessionUsuario)
+                        .addComponent(SessionUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(etqGestor)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -106,7 +106,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(PanelHeaderBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqGestor)
-                    .addComponent(etqSessionUsuario))
+                    .addComponent(SessionUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqAgroIndustrial)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -324,6 +324,10 @@ public class DashBoard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradoresActionPerformed
+        this.panelDefecto();
+    }//GEN-LAST:event_btnAdministradoresActionPerformed
+    
+    public void panelDefecto(){
         PanelPrincipal.removeAll();
         
         PanelUsuarios temporal = new PanelUsuarios();
@@ -332,9 +336,8 @@ public class DashBoard extends javax.swing.JFrame {
         PanelPrincipal.add(temporal);
         repaint();
         revalidate();
-       
-    }//GEN-LAST:event_btnAdministradoresActionPerformed
-
+    }
+    
     private void btnCerrarSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSessionActionPerformed
         dispose();
         this.ventanaLogin.setVisible(true);
@@ -375,7 +378,6 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
         PanelPrincipal.removeAll();
-
         PanelPerfil temporal = new PanelPerfil(SesionUsuario);
         temporal.setSize(PanelPrincipal.getSize());
         temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
@@ -392,6 +394,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel PanelHeaderA;
     private javax.swing.JPanel PanelHeaderB;
     private javax.swing.JPanel PanelPrincipal;
+    private javax.swing.JLabel SessionUsuario;
     private javax.swing.JButton btnAdministradores;
     private javax.swing.JButton btnCerrarSession;
     private javax.swing.JButton btnCultivos;
@@ -404,7 +407,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel etqDevelopers;
     private javax.swing.JLabel etqGestor;
     private javax.swing.JLabel etqRol;
-    private javax.swing.JLabel etqSessionUsuario;
     private javax.swing.JPanel panelSideBar;
     private javax.swing.JSeparator separador;
     // End of variables declaration//GEN-END:variables

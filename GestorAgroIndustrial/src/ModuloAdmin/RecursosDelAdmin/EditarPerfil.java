@@ -117,9 +117,11 @@ public final class EditarPerfil extends javax.swing.JFrame {
 
         campo_estado.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         campo_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVO", "INACTIVO" }));
+        campo_estado.setEnabled(false);
 
         campo_rol.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         campo_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "SUPER ADMIN" }));
+        campo_rol.setEnabled(false);
 
         btnCancelar.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
@@ -133,8 +135,9 @@ public final class EditarPerfil extends javax.swing.JFrame {
             }
         });
 
-        btnModificar.setBackground(new java.awt.Color(153, 255, 51));
+        btnModificar.setBackground(new java.awt.Color(0, 0, 102));
         btnModificar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setText("MODIFICAR");
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnModificar.setFocusable(false);
@@ -164,14 +167,11 @@ public final class EditarPerfil extends javax.swing.JFrame {
                                         .addComponent(etqCedula)
                                         .addComponent(etqNombre))
                                     .addGap(27, 27, 27))
-                                .addGroup(PanelFormularioLayout.createSequentialGroup()
-                                    .addGroup(PanelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(etqApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(etqEstado))
-                                    .addGap(18, 18, 18)))
-                            .addGroup(PanelFormularioLayout.createSequentialGroup()
-                                .addComponent(etqRol)
-                                .addGap(76, 76, 76)))
+                                .addGroup(PanelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(etqApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(etqEstado)))
+                            .addComponent(etqRol))
+                        .addGap(2, 2, 2)
                         .addGroup(PanelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campo_nombre, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(campo_cedula, javax.swing.GroupLayout.Alignment.TRAILING)
