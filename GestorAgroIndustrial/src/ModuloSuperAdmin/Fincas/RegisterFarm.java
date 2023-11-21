@@ -28,11 +28,13 @@ public class RegisterFarm extends javax.swing.JFrame {
     private String textTitle;
     private String farm_id;
     private String user;
-    private PanelFincas panelFincas = new PanelFincas();
+    private PanelFincas panelFincas;
     
-    public RegisterFarm(String title,String name, String address, String user, String url_img, String textButton, String farm_id) {
+    public RegisterFarm(String title,String name, String address, String user, String url_img, String textButton, String farm_id,PanelFincas panelFincas) {
+     
         initComponents();
         this.textTitle = title;
+        this.panelFincas=panelFincas;
         this.farm_id = farm_id;
         this.user = user;
         this.setLocationRelativeTo(null);
@@ -399,7 +401,7 @@ public class RegisterFarm extends javax.swing.JFrame {
         if (type.equals("register")) {
             if (response.equals("100")) {
                 System.out.println("01");
-                this.panelFincas.initAleterComponents();
+                this.panelFincas.card(true);
                 this.alert("Registro", "La finca se registro correctamente", "success");
                 setVisible(false);
             }else if(response.equalsIgnoreCase("500")){
@@ -411,7 +413,7 @@ public class RegisterFarm extends javax.swing.JFrame {
             }
         } else {
             if (response.equalsIgnoreCase("100")) {
-                this.panelFincas.initAleterComponents();
+                this.panelFincas.card(true);
                 this.alert("Registro", "La finca se edito correctamente", "success");
                 setVisible(false);
             }else if(response.equalsIgnoreCase("500")){

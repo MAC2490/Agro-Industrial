@@ -151,6 +151,7 @@ public class PanelFincas extends javax.swing.JPanel {
                 textPanel.add(btn);
 
                 cardPanel.add(textPanel, BorderLayout.SOUTH);
+                final PanelFincas fincas=this;
                 final String imgUrl = url;
                 btn.addActionListener(new ActionListener() {
                     @Override
@@ -161,7 +162,7 @@ public class PanelFincas extends javax.swing.JPanel {
                         }else{
                             adminDocument = user_document.getAsString();
                         }
-                        RegisterFarm registerWindow = new RegisterFarm("Editar Finca",farm_name.getAsString(),address.getAsString(), adminDocument,imgUrl, "Editar", farm_id.getAsString());
+                        RegisterFarm registerWindow = new RegisterFarm("Editar Finca",farm_name.getAsString(),address.getAsString(), adminDocument,imgUrl, "Editar", farm_id.getAsString(),fincas);
                         registerWindow.setVisible(true);
                     }
                 });
@@ -299,7 +300,7 @@ public class PanelFincas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        RegisterFarm registerWindow = new RegisterFarm("Registrar Finca","","","","", "Registrar", "");
+        RegisterFarm registerWindow = new RegisterFarm("Registrar Finca","","","","", "Registrar", "",this);
         registerWindow.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
