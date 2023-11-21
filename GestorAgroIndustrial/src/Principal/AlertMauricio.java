@@ -1,4 +1,5 @@
-    package Principal;
+
+package Principal;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class AlertMauricio extends javax.swing.JFrame {
+
     public AlertMauricio(String titulo, String mensaje, String tipo) {
         initComponents();
 
@@ -32,7 +34,6 @@ public class AlertMauricio extends javax.swing.JFrame {
         setVisible(true);
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,9 +44,7 @@ public class AlertMauricio extends javax.swing.JFrame {
         etqMensaje = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         contentPrincipal.setBackground(new java.awt.Color(153, 255, 153));
 
@@ -95,7 +94,7 @@ public class AlertMauricio extends javax.swing.JFrame {
                 .addGroup(contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contentPrincipalLayout.createSequentialGroup()
                         .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 14, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(etqMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -131,6 +130,7 @@ public class AlertMauricio extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
