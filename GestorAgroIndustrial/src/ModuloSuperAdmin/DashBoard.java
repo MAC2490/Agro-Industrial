@@ -33,7 +33,7 @@ public class DashBoard extends javax.swing.JFrame {
         JsonObject jsonObject = gson.fromJson(SesionUsuario, JsonObject.class);
         String nombreUsuario = jsonObject.get("nombre").getAsString();
         SessionUsuario.setText(nombreUsuario);
-        
+        this.panelDefecto();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -60,8 +60,8 @@ public class DashBoard extends javax.swing.JFrame {
         etqRol = new javax.swing.JLabel();
         PanelPrincipal = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DashBoard SuperAdmin - Gestor AgroIndustrial");
+        setUndecorated(true);
         setResizable(false);
 
         PanelHeaderB.setBackground(new java.awt.Color(0, 0, 0));
@@ -140,6 +140,11 @@ public class DashBoard extends javax.swing.JFrame {
         btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ProfileButton.png"))); // NOI18N
         btnPerfil.setBorderPainted(false);
         btnPerfil.setFocusable(false);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
 
         separador.setBackground(new java.awt.Color(50, 50, 50));
         separador.setForeground(new java.awt.Color(50, 50, 50));
@@ -319,6 +324,10 @@ public class DashBoard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradoresActionPerformed
+        this.panelDefecto();
+    }//GEN-LAST:event_btnAdministradoresActionPerformed
+    
+    public void panelDefecto(){
         PanelPrincipal.removeAll();
         
         PanelUsuarios temporal = new PanelUsuarios();
@@ -327,9 +336,8 @@ public class DashBoard extends javax.swing.JFrame {
         PanelPrincipal.add(temporal);
         repaint();
         revalidate();
-       
-    }//GEN-LAST:event_btnAdministradoresActionPerformed
-
+    }
+    
     private void btnCerrarSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSessionActionPerformed
         dispose();
         this.ventanaLogin.setVisible(true);
@@ -367,6 +375,16 @@ public class DashBoard extends javax.swing.JFrame {
         repaint();
         revalidate();
     }//GEN-LAST:event_btnInsumosActionPerformed
+
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+        PanelPrincipal.removeAll();
+        PanelPerfil temporal = new PanelPerfil(SesionUsuario);
+        temporal.setSize(PanelPrincipal.getSize());
+        temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
+        PanelPrincipal.add(temporal);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_btnPerfilActionPerformed
 
     
 

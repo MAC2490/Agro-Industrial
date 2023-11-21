@@ -1,6 +1,6 @@
 package ModuloSuperAdmin;
 
-import Principal.AlertGarcia;
+import Principal.Alert;
 import Principal.ConsumoAPI;
 import java.util.HashMap;
 import java.util.Map;
@@ -74,12 +74,12 @@ public class FormInsert extends javax.swing.JFrame {
 
         if (respuesta != null) {
             if (respuesta.contains("OK")) {
-                AlertGarcia alerta = new AlertGarcia("Datos Editados", "Datos Editados Correctamente", "success");
+                Alert alerta = new Alert("Datos Editados", "Datos Editados Correctamente", "success");
                 System.out.println("La edición se ha realizado exitosamente");
                 dispose();
             } else {
                 System.out.println("La edición ha fallado");
-                AlertGarcia alerta = new AlertGarcia("Error DE Edicion", "Datos No Editados", "error");
+                Alert alerta = new Alert("Error DE Edicion", "Datos No Editados", "error");
                 System.out.println(respuesta);
             }
         } else {
@@ -105,11 +105,11 @@ public class FormInsert extends javax.swing.JFrame {
 
         System.out.println("Respuesta de la API: " + respuestaAPI);
         if (respuestaAPI.contains("OK")) {
-            AlertGarcia alerta = new AlertGarcia("Datos Insertados", "Datos Insertados Correctamente", "success");
+            Alert alerta = new Alert("Datos Insertados", "Datos Insertados Correctamente", "success");
             System.out.print("insertado exitosamente");
             dispose();
         } else {
-            AlertGarcia alerta = new AlertGarcia("Datos NO Insertados", "Insercion Fallida", "error");
+            Alert alerta = new Alert("Datos NO Insertados", "Insercion Fallida", "error");
             System.out.print("la insersion ha fallado");
         }
     }
@@ -314,7 +314,7 @@ public class FormInsert extends javax.swing.JFrame {
             }
         } else {
             // Al menos un campo está vacío, muestra un mensaje de error o realiza alguna acción
-            AlertGarcia alerta = new AlertGarcia("Campos Vacios", "Campos Vacios", "warning");
+            Alert alerta = new Alert("Campos Vacios", "Campos Vacios", "warning");
             System.out.println("No se pueden dejar campos vacíos");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
