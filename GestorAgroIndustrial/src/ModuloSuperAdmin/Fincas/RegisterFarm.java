@@ -31,8 +31,8 @@ public class RegisterFarm extends javax.swing.JFrame {
     private PanelFincas panelFincas;
     
     public RegisterFarm(String title,String name, String address, String user, String url_img, String textButton, String farm_id,PanelFincas panelFincas) {
-     
         initComponents();
+        setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
         this.textTitle = title;
         this.panelFincas=panelFincas;
         this.farm_id = farm_id;
