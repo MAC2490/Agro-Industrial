@@ -28,11 +28,14 @@ public class RegisterFarm extends javax.swing.JFrame {
     private String textTitle;
     private String farm_id;
     private String user;
+    
     private PanelFincas panelFarm;
     
     public RegisterFarm(String title,String name, String address, String user, String url_img, String textButton, String farm_id, PanelFincas panelFarm) {
         initComponents();
+        setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
         this.textTitle = title;
+        this.panelFarm=panelFarm;
         this.farm_id = farm_id;
         this.panelFarm = panelFarm;
         this.user = user;

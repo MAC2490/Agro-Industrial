@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/sg830/OneDrive/Escritorio/clone/Agro-Industrial/GestorAgroIndustrial/src/Principal/AlertGarcia.java</file>
+            <file>file:/C:/Users/sg830/OneDrive/Escritorio/clone/Agro-Industrial/GestorAgroIndustrial/src/ModuloSuperAdmin/PanelCultivos.java</file>
+            <file>file:/C:/Users/sg830/OneDrive/Escritorio/clone/Agro-Industrial/GestorAgroIndustrial/src/ModuloSuperAdmin/FormInsert.java</file>
+=======
+            <file>file:/C:/Users/ADSO/Desktop/Agro-Industrial/GestorAgroIndustrial/src/ModuloSuperAdmin/Fincas/RegisterFarm.java</file>
+            <file>file:/C:/Users/ADSO/Desktop/Agro-Industrial/GestorAgroIndustrial/src/ModuloSuperAdmin/PanelFincas.java</file>
+>>>>>>> origin/master
+        </group>
+>>>>>>> origin/master
     </open-files>
 </project-private>

@@ -5,6 +5,8 @@ import ModuloAdmin.DashBoardAdmin;
 import ModuloSuperAdmin.DashBoard;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,7 +92,6 @@ public class Login extends javax.swing.JFrame {
 
         campo_documento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         campo_documento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campo_documento.setText("1088238440");
 
         etqPassword.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         etqPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -98,7 +99,6 @@ public class Login extends javax.swing.JFrame {
 
         campo_password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         campo_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campo_password.setText("67890");
 
         btnIngresar.setBackground(new java.awt.Color(153, 255, 51));
         btnIngresar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
@@ -237,12 +237,8 @@ public class Login extends javax.swing.JFrame {
                 String rolRegistrado = jsonObject.get("rol").getAsString();
                 
                 if( documento.equals(documentoRegistrado) && password.equals(passwordRegistrado)){
-                    System.out.println("Los datos si coinciden");
-                    
                     if(estadoRegistrado.equals("ACTIVO")){
-                        System.out.println("usuario activo");
                         if(rolRegistrado.equals("SUPER ADMIN")){
-                            System.out.println("usuario con rol super admin");
                             String DatosUsuario = ConsultaIndividual;
                             setVisible(false);
                             DashBoard ventana = new DashBoard(this, DatosUsuario);
@@ -251,24 +247,25 @@ public class Login extends javax.swing.JFrame {
                             campo_password.setText("");
                             
                         }else if(rolRegistrado.equals("ADMIN")){
-                            System.out.println("usuario con rol admin");
+                            String DatosUsuario = ConsultaIndividual;
                             setVisible(false);
-                            DashBoardAdmin ventana = new DashBoardAdmin(this);
+                            DashBoardAdmin ventana = new DashBoardAdmin(this, DatosUsuario);
                             ventana.setVisible(true);
+                            campo_documento.setText("");
+                            campo_password.setText("");
                         }
                     }else if(estadoRegistrado.equals("INACTIVO")){
-                        System.out.println("usuario inactivo");
+                        Alert alerta = new Alert("Estado Inactivo", "Su estado es inactivo - Consulte a su administrador", "warning");
                     }
                     
                 }else{
-                    System.out.println("ERROR Los datos NO coinciden");
+                    Alert alerta = new Alert("Datos Incorrectos", "La contraseña es incorrecta", "warning");
                 }
-                
             }else{
-                System.out.println("La cedula no esta en el sistema");
+                Alert alerta = new Alert("No Encontrado", "La cedula no esta registrada", "error");
             }
         }else{
-            System.out.println("Los campos estan vacios");
+            Alert alerta = new Alert("Error", "Faltan campos por llenar", "error");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -286,6 +283,26 @@ public class Login extends javax.swing.JFrame {
         System.out.println("Iniciando el programa");
         setLocationRelativeTo(null);
         setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
+        
+        campo_documento.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // Verificar si el carácter es un número
+                if (!Character.isDigit(e.getKeyChar())) {
+                    e.consume(); // Consumir el evento para evitar que se ingrese el carácter no deseado
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // No se necesita implementar en este caso
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // No se necesita implementar en este caso
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

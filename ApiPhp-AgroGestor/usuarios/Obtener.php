@@ -5,7 +5,8 @@
 
     include 'Conexion.php';
 
-    $consulta = $base_de_datos->query("SELECT * FROM personas");
+    $consulta = $base_de_datos->query("SELECT * FROM usuarios");
+
     $datos = $consulta->fetchAll();
 
     $respuesta['registros'] = $datos;

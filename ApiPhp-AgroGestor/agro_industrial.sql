@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2023 a las 03:35:36
+-- Tiempo de generación: 21-11-2023 a las 01:19:27
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -40,7 +40,7 @@ CREATE TABLE `cultivos` (
 --
 
 INSERT INTO `cultivos` (`id_cultivo`, `nombre`, `descripcion`, `tiempo_cosecha`, `estado`) VALUES
-(1, 'Ma?z', '', '2023-01-15', 'DISPONIBLE'),
+(1, 'ASD', 'SADA', '2023-01-15', 'DISPONIBLE'),
 (2, 'Tomates', '', '2023-02-20', 'DISPONIBLE'),
 (3, 'Trigo', '', '2023-03-10', 'NO DISPONIBLE'),
 (4, 'Arroz', '', '2023-04-05', 'DISPONIBLE'),
@@ -80,6 +80,7 @@ CREATE TABLE `fincas` (
   `id_finca` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `direccion` varchar(255) NOT NULL,
+  `img` varchar(255) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -87,13 +88,13 @@ CREATE TABLE `fincas` (
 -- Volcado de datos para la tabla `fincas`
 --
 
-INSERT INTO `fincas` (`id_finca`, `nombre`, `direccion`, `id_usuario`) VALUES
-(1, 'Finca A', 'Calle 123, Ciudad', 1),
-(2, 'Finca B', 'Avenida XYZ, Pueblo', 2),
-(3, 'Finca C', 'Carretera 456, Villa', 3),
-(4, 'Finca D', 'Ruta 789, Pueblo', 4),
-(5, 'Finca E', 'Avenida 456, Ciudad', 5),
-(6, 'Finca F', 'Calle 789, Villa', 6);
+INSERT INTO `fincas` (`id_finca`, `nombre`, `direccion`, `img`, `id_usuario`) VALUES
+(1, 'Finca B', 'Calle 123, Ciudad', '/img/finca 1.png', NULL),
+(2, 'Finca f', 'Avenida XYZ, Pueblo', '/img/finca 1.png', NULL),
+(3, 'Finca C', 'Carretera 456, Villa', NULL, 3),
+(4, 'Finca D', 'Ruta 789, Pueblo', NULL, 4),
+(5, 'Finca E', 'Avenida 456, Ciudad', NULL, 5),
+(6, 'Finca F', 'Calle 789, Villa', NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -110,20 +111,21 @@ CREATE TABLE `insumos` (
   `cantidad` int(11) DEFAULT NULL,
   `fecha_compra` date DEFAULT NULL,
   `costo_compra` int(11) DEFAULT NULL,
-  `proveedor` varchar(255) DEFAULT NULL
+  `proveedor` varchar(255) DEFAULT NULL,
+  `estado` enum('ACTIVO','DESHABILITADO') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `insumos`
 --
 
-INSERT INTO `insumos` (`insumos_id`, `name`, `serial`, `tipo_insumo`, `unidada_medida`, `cantidad`, `fecha_compra`, `costo_compra`, `proveedor`) VALUES
-(1, 'Fertilizante A', 12345, 'Fertilizante', 'Kilos', 100, '2022-12-05', 500, 'Proveedor X'),
-(2, 'Semillas B', 67890, 'Semillas', 'Kilos', 50, '2023-01-10', 200, 'Proveedor Y'),
-(3, 'Pesticida C', 24680, 'Pesticida', 'Litros', 30, '2022-11-20', 300, 'Proveedor Z'),
-(4, 'Herramienta D', 13579, 'Herramienta', 'Unidades', 10, '2023-02-15', 1000, 'Proveedor W'),
-(5, 'Abono E', 86420, 'Abono', 'Kilos', 200, '2023-03-20', 800, 'Proveedor V'),
-(6, 'Insecticida F', 97531, 'Insecticida', 'Litros', 40, '2023-04-10', 400, 'Proveedor U');
+INSERT INTO `insumos` (`insumos_id`, `name`, `serial`, `tipo_insumo`, `unidada_medida`, `cantidad`, `fecha_compra`, `costo_compra`, `proveedor`, `estado`) VALUES
+(1, 'Fertilizante A', 12345, 'Fertilizante', 'Kilos', 100, '2022-12-05', 500, 'Proveedor X', 'ACTIVO'),
+(2, 'Semillas B', 67890, 'Semillas', 'Kilos', 50, '2023-01-10', 200, 'Proveedor Y', 'ACTIVO'),
+(3, 'Pesticida C', 24680, 'Pesticida', 'Litros', 30, '2022-11-20', 300, 'Proveedor Z', 'ACTIVO'),
+(4, 'Herramienta D', 13579, 'Herramienta', 'Unidades', 10, '2023-02-15', 1000, 'Proveedor W', 'ACTIVO'),
+(5, 'Abono E', 86420, 'Abono', 'Kilos', 200, '2023-03-20', 800, 'Proveedor V', 'ACTIVO'),
+(6, 'Insecticida F', 97531, 'Insecticida', 'Litros', 40, '2023-04-10', 400, 'Proveedor U', 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -222,9 +224,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `cedula`, `nombre`, `apellido`, `estado`, `rol`, `password`) VALUES
-(1, '1111661815', 'Juan Sebastian', 'Pechene Colorado', 'ACTIVO', 'SUPER ADMIN', '12345'),
+(1, '1', 'Juan Sebastian', 'Pechene Colorado', 'ACTIVO', 'SUPER ADMIN', '1'),
 (2, '1088238440', 'Mauricio', 'Aguirre Cardona', 'ACTIVO', 'SUPER ADMIN', '67890'),
-(3, '1004669734', 'Sebastian', 'Garcia Murillo', 'ACTIVO', 'SUPER ADMIN', '10293'),
+(3, '123', 'Sebastian', 'Garcia Murillo', 'ACTIVO', 'SUPER ADMIN', '10293'),
 (4, '1090332917', 'Jhon Alberth', 'Aricapa Pinto', 'ACTIVO', 'SUPER ADMIN', '01928'),
 (5, '67589031', 'Jairo Alberto', 'Boveda De La  Cruz', 'ACTIVO', 'ADMIN', '55555'),
 (6, '1088004610', 'Oscar', 'Java', 'ACTIVO', 'ADMIN', 'TeamJava');
