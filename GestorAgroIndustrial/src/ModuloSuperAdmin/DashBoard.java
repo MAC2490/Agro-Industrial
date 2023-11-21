@@ -140,6 +140,11 @@ public class DashBoard extends javax.swing.JFrame {
         btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ProfileButton.png"))); // NOI18N
         btnPerfil.setBorderPainted(false);
         btnPerfil.setFocusable(false);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
 
         separador.setBackground(new java.awt.Color(50, 50, 50));
         separador.setForeground(new java.awt.Color(50, 50, 50));
@@ -370,6 +375,16 @@ public class DashBoard extends javax.swing.JFrame {
         repaint();
         revalidate();
     }//GEN-LAST:event_btnInsumosActionPerformed
+
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+        PanelPrincipal.removeAll();
+        PanelPerfil temporal = new PanelPerfil(SesionUsuario);
+        temporal.setSize(PanelPrincipal.getSize());
+        temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
+        PanelPrincipal.add(temporal);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_btnPerfilActionPerformed
 
     
 
