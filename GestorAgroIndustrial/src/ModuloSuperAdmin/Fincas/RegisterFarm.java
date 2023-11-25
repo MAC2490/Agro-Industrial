@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import ModuloSuperAdmin.PanelFincas;
-import Principal.Alert;
+import Principal.AlertMauricio;
 import java.awt.Color;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -28,14 +28,16 @@ public class RegisterFarm extends javax.swing.JFrame {
     private String textTitle;
     private String farm_id;
     private String user;
-    private PanelFincas panelFincas;
     
-    public RegisterFarm(String title,String name, String address, String user, String url_img, String textButton, String farm_id,PanelFincas panelFincas) {
+    private PanelFincas panelFarm;
+    
+    public RegisterFarm(String title,String name, String address, String user, String url_img, String textButton, String farm_id, PanelFincas panelFarm) {
         initComponents();
         setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
         this.textTitle = title;
-        this.panelFincas=panelFincas;
+        this.panelFarm=panelFarm;
         this.farm_id = farm_id;
+        this.panelFarm = panelFarm;
         this.user = user;
         this.setLocationRelativeTo(null);
         String api = apiConsumption.consumoGET("http://localhost/ApiPhp-AgroGestor/Fincas/getAdmins.php");
@@ -393,7 +395,7 @@ public class RegisterFarm extends javax.swing.JFrame {
     }
     
     public void alert(String title, String mesage, String type){
-        Alert alert = new Alert(title, mesage, type);
+        AlertMauricio alert = new AlertMauricio(title, mesage, type);
     }
     
     public void validateProcess(String response, String type){
@@ -401,7 +403,8 @@ public class RegisterFarm extends javax.swing.JFrame {
         if (type.equals("register")) {
             if (response.equals("100")) {
                 System.out.println("01");
-                this.panelFincas.card(true);
+                this.panelFarm.card(true);
+                System.err.println("Entro aqui en 1");
                 this.alert("Registro", "La finca se registro correctamente", "success");
                 setVisible(false);
             }else if(response.equalsIgnoreCase("500")){
@@ -413,7 +416,8 @@ public class RegisterFarm extends javax.swing.JFrame {
             }
         } else {
             if (response.equalsIgnoreCase("100")) {
-                this.panelFincas.card(true);
+                this.panelFarm.card(true);
+                  System.err.println("Entro aqui en 2");
                 this.alert("Registro", "La finca se edito correctamente", "success");
                 setVisible(false);
             }else if(response.equalsIgnoreCase("500")){

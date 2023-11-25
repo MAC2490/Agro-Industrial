@@ -175,7 +175,7 @@ public class Login extends javax.swing.JFrame {
         etqDevelopers.setBackground(new java.awt.Color(255, 255, 255));
         etqDevelopers.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         etqDevelopers.setForeground(new java.awt.Color(255, 255, 255));
-        etqDevelopers.setText("Desarrollado Por AdsoDev's");
+        etqDevelopers.setText("Desarrollado Por EnginnerSoft");
         etqDevelopers.setToolTipText("");
 
         javax.swing.GroupLayout PanelHeaderLayout = new javax.swing.GroupLayout(PanelHeader);
