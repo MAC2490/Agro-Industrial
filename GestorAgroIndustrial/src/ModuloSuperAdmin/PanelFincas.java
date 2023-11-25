@@ -91,7 +91,6 @@ public class PanelFincas extends javax.swing.JPanel {
                 JsonElement user_document = dataFarms.get("document");
                 JsonElement address = dataFarms.get("direccion");
                 JsonElement url_img = dataFarms.get("img");
-                
                 JPanel cardPanel = new JPanel();
                 cardPanel.setLayout(new BorderLayout());
                 cardPanel.setBorder(new EmptyBorder(3, 4, 30, 1));
