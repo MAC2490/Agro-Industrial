@@ -262,6 +262,7 @@ public class RegistrarAdmin extends javax.swing.JFrame {
 
                 dispose();   
                 Alert alerta = new Alert("Registro Exitoso!", "El usuario se registro correctamente", "success");
+                this.ventanaDashboard.cargarDatos();
                 
             }else if(!validarCedulaRepetida.equals("[]")){
                 Alert alerta = new Alert("Dato Repetido", "La cedula ingresada ya esta registrada", "warning");
