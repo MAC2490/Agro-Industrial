@@ -1,4 +1,3 @@
-
 package ModuloSuperAdmin.RecursosAdmins;
 
 import ModuloSuperAdmin.PanelPerfil;
@@ -17,12 +16,11 @@ public final class EditarPerfil extends javax.swing.JFrame {
     ConsumoAPI ejemplo = new ConsumoAPI();
     Gson gson = new Gson();
     String DatosPersona;
-    
 
     public EditarPerfil(PanelPerfil ventanaDashboard, String SessionUsuario) {
         this.ventanaDashboard = ventanaDashboard;
         this.DatosPersona = SessionUsuario;
-        
+
         initComponents();
         initAlternComponents();
     }
@@ -232,52 +230,10 @@ public final class EditarPerfil extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        String cedula = campo_cedula.getText();
-        String nombre = campo_nombre.getText();
-        String apellido = campo_apellido.getText();
-        String estado = (String) campo_estado.getSelectedItem();
-        String rol = (String) campo_rol.getSelectedItem();
-
-        if(!cedula.equals("") && !nombre.equals("") && !apellido.equals("") && !estado.equals("") && !rol.equals("")){
-        
-            Map<String, String> updateData = new HashMap<>();            
-            JsonObject ObjetoPersona = gson.fromJson(DatosPersona, JsonObject.class);
-            String id_Usuario = ObjetoPersona.get("id_usuario").getAsString();
-            String passwordUsuario = ObjetoPersona.get("password").getAsString();
-            
-            updateData.put("id_usuario", id_Usuario);
-            updateData.put("cedula", campo_cedula.getText());
-            updateData.put("nombre", campo_nombre.getText());
-            updateData.put("apellido", campo_apellido.getText());
-            updateData.put("estado", estado);
-            updateData.put("rol", rol);
-            updateData.put("password", passwordUsuario);
-
-            System.out.println("Consumo UPDATE: " + ejemplo.consumoPOST("http://localhost/ApiPhp-AgroGestor/usuarios/Update.php", updateData));
-            
-            String respuesta = ejemplo.consumoPOST("http://localhost/ApiPhp-AgroGestor/usuarios/Update.php", updateData);
-            JsonObject jsonObject = gson.fromJson(respuesta, JsonObject.class);
-            String status = jsonObject.get("status").getAsString();  
-            
-            if (status.equals("true")){
-                Alert alerta = new Alert("Modificacion Exitosa!", "Tus datos se actualizaron correctamente", "success");   
-                dispose();
-            }else if(status.equals("false")){
-                Alert alerta = new Alert("Modificacion Incorrecta!", "La cedula esta repetida", "warning");   
-            }
-            
-        }else{
-            Alert alerta = new Alert("Error", "Faltan campos por llenar", "error");
-        }
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-    
-    public void initAlternComponents(){
+    public void initAlternComponents() {
         setLocationRelativeTo(null);
-        setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
-        
+        setIconImage(getToolkit().createImage(ClassLoader.getSystemResource("img/LogoLOGIN.png")));
+
         JsonObject ObjetoPersona = gson.fromJson(DatosPersona, JsonObject.class);
         String cedulaUsuario = ObjetoPersona.get("cedula").getAsString();
         String nombreUsuario = ObjetoPersona.get("nombre").getAsString();
@@ -290,8 +246,7 @@ public final class EditarPerfil extends javax.swing.JFrame {
         campo_apellido.setText(apellidoUsuario);
         campo_estado.setSelectedItem(estadoUsuario);
         campo_rol.setSelectedItem(rolUsuario);
-        
-        
+
         campo_cedula.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -312,7 +267,47 @@ public final class EditarPerfil extends javax.swing.JFrame {
             }
         });
     }
- 
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        String cedula = campo_cedula.getText();
+        String nombre = campo_nombre.getText();
+        String apellido = campo_apellido.getText();
+        String estado = (String) campo_estado.getSelectedItem();
+        String rol = (String) campo_rol.getSelectedItem();
+
+        if (!cedula.equals("") && !nombre.equals("") && !apellido.equals("") && !estado.equals("") && !rol.equals("")) {
+
+            Map<String, String> updateData = new HashMap<>();
+            JsonObject ObjetoPersona = gson.fromJson(DatosPersona, JsonObject.class);
+            String id_Usuario = ObjetoPersona.get("id_usuario").getAsString();
+            String passwordUsuario = ObjetoPersona.get("password").getAsString();
+
+            updateData.put("id_usuario", id_Usuario);
+            updateData.put("cedula", campo_cedula.getText());
+            updateData.put("nombre", campo_nombre.getText());
+            updateData.put("apellido", campo_apellido.getText());
+            updateData.put("estado", estado);
+            updateData.put("rol", rol);
+            updateData.put("password", passwordUsuario);
+
+            System.out.println("Consumo UPDATE: " + ejemplo.consumoPOST("http://localhost/ApiPhp-AgroGestor/usuarios/Update.php", updateData));
+
+            String respuesta = ejemplo.consumoPOST("http://localhost/ApiPhp-AgroGestor/usuarios/Update.php", updateData);
+            JsonObject jsonObject = gson.fromJson(respuesta, JsonObject.class);
+            String status = jsonObject.get("status").getAsString();
+
+            if (status.equals("true")) {
+                Alert alerta = new Alert("Modificacion Exitosa!", "Tus datos se actualizaron correctamente", "success");
+                dispose();
+            } else if (status.equals("false")) {
+                Alert alerta = new Alert("Modificacion Incorrecta!", "La cedula esta repetida", "warning");
+            }
+
+        } else {
+            Alert alerta = new Alert("Error", "Faltan campos por llenar", "error");
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LogoGestor;
     private javax.swing.JPanel PanelFormulario;

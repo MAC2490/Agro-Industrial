@@ -276,7 +276,9 @@ public class EditarAdmin extends javax.swing.JFrame {
             
 
             if (status.equals("true")){
-                Alert alerta = new Alert("Modificacion Exitosa!", "El usuario se modifico correctamente", "success");   
+                Alert alerta = new Alert("Modificacion Exitosa!", "El usuario se modifico correctamente", "success");  
+                
+                this.ventanaDashboard.cargarDatos();
                 dispose();
             }else if(status.equals("false")){
                 Alert alerta = new Alert("Modificacion Incorrecta!", "La cedula esta repetida", "warning");   
