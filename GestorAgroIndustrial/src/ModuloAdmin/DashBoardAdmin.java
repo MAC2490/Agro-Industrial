@@ -1,4 +1,3 @@
-
 package ModuloAdmin;
 
 import Principal.Login;
@@ -183,7 +182,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
 
         etqDevelopers.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         etqDevelopers.setForeground(new java.awt.Color(255, 255, 255));
-        etqDevelopers.setText("Desarrollado Por EnginnerSoft");
+        etqDevelopers.setText("Desarrollado Por AdsoDev's");
 
         javax.swing.GroupLayout PanelFooterLayout = new javax.swing.GroupLayout(PanelFooter);
         PanelFooter.setLayout(PanelFooterLayout);
