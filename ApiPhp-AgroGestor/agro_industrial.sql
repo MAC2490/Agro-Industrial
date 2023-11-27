@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2023 a las 01:19:27
+-- Tiempo de generación: 26-11-2023 a las 00:54:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -135,6 +135,7 @@ INSERT INTO `insumos` (`insumos_id`, `name`, `serial`, `tipo_insumo`, `unidada_m
 
 CREATE TABLE `insumos_x_cultivos` (
   `id_cultivo` int(11) NOT NULL,
+  `id_finca` int(11) NOT NULL,
   `id_insumo` int(11) NOT NULL,
   `valor_aprox` int(11) DEFAULT NULL,
   `cantidad_pro` int(11) DEFAULT NULL,
@@ -146,13 +147,14 @@ CREATE TABLE `insumos_x_cultivos` (
 -- Volcado de datos para la tabla `insumos_x_cultivos`
 --
 
-INSERT INTO `insumos_x_cultivos` (`id_cultivo`, `id_insumo`, `valor_aprox`, `cantidad_pro`, `unidad_medida`, `fecha`) VALUES
-(1, 1, 10, 1, 'KILOS', '2023-01-05'),
-(1, 2, 5, 1, 'KILOS', '2023-01-05'),
-(2, 2, 7, 1, 'KILOS', '2023-02-10'),
-(3, 3, 8, 1, 'ARROBA', '2023-03-15'),
-(4, 4, 15, 1, 'LIBRAS', '2023-04-20'),
-(4, 5, 25, 1, 'KILOS', '2023-04-20');
+INSERT INTO `insumos_x_cultivos` (`id_cultivo`, `id_finca`, `id_insumo`, `valor_aprox`, `cantidad_pro`, `unidad_medida`, `fecha`) VALUES
+(1, 1, 1, 10, 1, 'KILOS', '2023-01-05'),
+(1, 2, 2, 5, 1, 'KILOS', '2023-01-05'),
+(1, 4, 4, 12, 15, 'ARROBA', '2023-11-25'),
+(2, 3, 2, 7, 1, 'KILOS', '2023-02-10'),
+(4, 5, 4, 15, 1, 'LIBRAS', '2023-04-20'),
+(4, 6, 5, 25, 1, 'KILOS', '2023-04-20'),
+(5, 4, 3, 45, 15, 'KILOS', '2023-11-25');
 
 -- --------------------------------------------------------
 
@@ -224,12 +226,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `cedula`, `nombre`, `apellido`, `estado`, `rol`, `password`) VALUES
-(1, '1', 'Juan Sebastian', 'Pechene Colorado', 'ACTIVO', 'SUPER ADMIN', '1'),
+(1, '1', 'Juan Esteban', 'Pechene Colorado', 'ACTIVO', 'SUPER ADMIN', '1'),
 (2, '1088238440', 'Mauricio', 'Aguirre Cardona', 'ACTIVO', 'SUPER ADMIN', '67890'),
 (3, '123', 'Sebastian', 'Garcia Murillo', 'ACTIVO', 'SUPER ADMIN', '10293'),
-(4, '1090332917', 'Jhon Alberth', 'Aricapa Pinto', 'ACTIVO', 'SUPER ADMIN', '01928'),
-(5, '67589031', 'Jairo Alberto', 'Boveda De La  Cruz', 'ACTIVO', 'ADMIN', '55555'),
-(6, '1088004610', 'Oscar', 'Java', 'ACTIVO', 'ADMIN', 'TeamJava');
+(4, '1090332917', 'Jhon Alberth', 'Aricapa Pinto', 'ACTIVO', 'ADMIN', '10'),
+(5, '12345', 'Jairo Alberto', 'Boveda De La  Cruz', 'ACTIVO', 'ADMIN', '1'),
+(6, '108800', 'Oscar', 'Java', 'ACTIVO', 'ADMIN', '2');
 
 --
 -- Índices para tablas volcadas
@@ -266,7 +268,8 @@ ALTER TABLE `insumos`
 --
 ALTER TABLE `insumos_x_cultivos`
   ADD PRIMARY KEY (`id_cultivo`,`id_insumo`),
-  ADD KEY `id_insumo` (`id_insumo`);
+  ADD KEY `id_insumo` (`id_insumo`),
+  ADD KEY `id_finca` (`id_finca`);
 
 --
 -- Indices de la tabla `insumo_x_finca`
@@ -344,7 +347,8 @@ ALTER TABLE `fincas`
 --
 ALTER TABLE `insumos_x_cultivos`
   ADD CONSTRAINT `insumos_x_cultivos_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`),
-  ADD CONSTRAINT `insumos_x_cultivos_ibfk_2` FOREIGN KEY (`id_insumo`) REFERENCES `insumos` (`insumos_id`);
+  ADD CONSTRAINT `insumos_x_cultivos_ibfk_2` FOREIGN KEY (`id_insumo`) REFERENCES `insumos` (`insumos_id`),
+  ADD CONSTRAINT `insumos_x_cultivos_ibfk_3` FOREIGN KEY (`id_finca`) REFERENCES `fincas` (`id_finca`);
 
 --
 -- Filtros para la tabla `insumo_x_finca`
