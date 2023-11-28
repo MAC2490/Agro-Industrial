@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,6 +17,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ModuloSuperAdmin.Fincas.RegisterFarm;
 import Principal.AlertMauricio;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +28,7 @@ import java.awt.event.FocusListener;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.border.MatteBorder;
+import ModuloSuperAdmin.Fincas.Details;
 
 public class PanelFincas extends javax.swing.JPanel {
     
@@ -121,21 +124,32 @@ public class PanelFincas extends javax.swing.JPanel {
                 JLabel imgLabel = new JLabel(icon);
                 cardPanel.add(imgLabel, BorderLayout.WEST);
 
-                JPanel textPanel = new JPanel();
-                textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+                JPanel textPanel = new JPanel(new GridBagLayout());
+                GridBagConstraints restriction = new GridBagConstraints();
+                // textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
 
                 JLabel nameLabel = new JLabel("Nombre finca: "+farm_name.getAsString());
                 nameLabel.setBorder(new EmptyBorder(10, 70, 0, 0));
-                textPanel.add(nameLabel);
-
+                restriction.gridx = 0;
+                restriction.gridy = 0;
+                restriction.gridheight = 1;
+                restriction.gridwidth = 4;
+                restriction.weighty = 2;
+                restriction.weightx = 100;
+                restriction.fill = GridBagConstraints.BOTH;
+                textPanel.add(nameLabel, restriction);
 
                 JLabel addressLabel = new JLabel("Direccion: "+address.getAsString());
                 addressLabel.setBorder(new EmptyBorder(10, 0, 5, 0));
-                textPanel.add(addressLabel);
+                restriction.gridx = 0;
+                restriction.gridy = 1;
+                textPanel.add(addressLabel, restriction);
                 
                 JLabel userLabel = new JLabel();
                 userLabel.setBorder(new EmptyBorder(10, 0, 10, 0));
-                textPanel.add(userLabel);
+                restriction.gridx = 0;
+                restriction.gridy = 2;
+                textPanel.add(userLabel, restriction);
                 
                 String nameAdmin = "";
                 if (user_name.isJsonNull()) {
@@ -150,11 +164,25 @@ public class PanelFincas extends javax.swing.JPanel {
                 
                 JButton btn = new JButton("EDITAR");
                 btn.setFocusable(true);
-                btn.setBackground(Color.GREEN);
-                btn.setPreferredSize(new Dimension(250, btn.getPreferredSize().height));
-                btn.setMaximumSize(new Dimension(250,btn.getPreferredSize().height));
-                textPanel.add(btn);
+                btn.setBackground(new Color(20,224,71));
+                btn.setPreferredSize(new Dimension(118, btn.getPreferredSize().height));
+                btn.setMaximumSize(new Dimension(118,btn.getPreferredSize().height));
+                
+                JButton btnMore = new JButton("DETALLES");
+                btnMore.setFocusable(true);
+                btnMore.setBackground(new Color(153,255,204));
+                btnMore.setPreferredSize(new Dimension(118, btn.getPreferredSize().height));
+                btnMore.setMaximumSize(new Dimension(118,btn.getPreferredSize().height));
+                
+                JPanel buttonPanel = new JPanel();
+                buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+                restriction.gridx = 0;
+                restriction.gridy = 3;
+                buttonPanel.add(btn);
+                buttonPanel.add(btnMore);
 
+                textPanel.add(buttonPanel, restriction);
+                    
                 cardPanel.add(textPanel, BorderLayout.SOUTH);
                 final PanelFincas fincas=this;
                 final String imgUrl = url;
@@ -170,6 +198,14 @@ public class PanelFincas extends javax.swing.JPanel {
                         }
                         RegisterFarm registerWindow = new RegisterFarm("Editar Finca",farm_name.getAsString(),address.getAsString(), adminDocument,imgUrl, "Editar", farm_id.getAsString(), panelFarms);
                         registerWindow.setVisible(true);
+                    }
+                });
+                
+                btnMore.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Details window = new Details(farm_id.getAsString(), farm_name.getAsString());
+                        window.setVisible(true);
                     }
                 });
                 
@@ -235,11 +271,9 @@ public class PanelFincas extends javax.swing.JPanel {
         jScrollPane1.setViewportView(panel_farm);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("FINCAS");
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 51));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setBackground(new java.awt.Color(20, 224, 71));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mas.png"))); // NOI18N
         jButton1.setText("Registrar Finca");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -252,7 +286,6 @@ public class PanelFincas extends javax.swing.JPanel {
         totalFarms.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         search.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        search.setForeground(new java.awt.Color(0, 0, 0));
         search.setText("Buscar...");
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,8 +293,7 @@ public class PanelFincas extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 255, 51));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setBackground(new java.awt.Color(20, 224, 71));
         jButton2.setText("Buscar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,7 +301,7 @@ public class PanelFincas extends javax.swing.JPanel {
             }
         });
 
-        back.setBackground(new java.awt.Color(153, 255, 51));
+        back.setBackground(new java.awt.Color(20, 224, 71));
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         back.setForeground(new java.awt.Color(0, 0, 0));
         back.setText("Volver");

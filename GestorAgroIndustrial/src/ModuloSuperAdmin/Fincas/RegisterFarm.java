@@ -69,12 +69,10 @@ public class RegisterFarm extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(20, 224, 71));
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre Finca");
 
         farm_name.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +81,6 @@ public class RegisterFarm extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Direccion");
 
         addres.addActionListener(new java.awt.event.ActionListener() {
@@ -92,10 +89,7 @@ public class RegisterFarm extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Imagen de la finca (Opcional)");
-
-        show_img.setForeground(new java.awt.Color(0, 0, 0));
 
         register.setBackground(new java.awt.Color(153, 255, 153));
         register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mas.png"))); // NOI18N
@@ -105,7 +99,7 @@ public class RegisterFarm extends javax.swing.JFrame {
             }
         });
 
-        cancel.setBackground(new java.awt.Color(102, 204, 0));
+        cancel.setBackground(new java.awt.Color(20, 224, 71));
         cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atras.png"))); // NOI18N
         cancel.setBorder(null);
         cancel.setFocusable(false);
@@ -115,7 +109,6 @@ public class RegisterFarm extends javax.swing.JFrame {
             }
         });
 
-        documentLable.setForeground(new java.awt.Color(0, 0, 0));
         documentLable.setText("Documento Responsable");
 
         img_save.setBackground(new java.awt.Color(153, 255, 153));
@@ -141,12 +134,9 @@ public class RegisterFarm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(addres)
                             .addGap(33, 33, 33)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(farm_name, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(documentLable, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(admins, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(farm_name, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(documentLable, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(admins, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
