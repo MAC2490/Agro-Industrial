@@ -1,8 +1,8 @@
 
-package ModuloSuperAdmin.RecursosAdmins;
+package ModuloAdmin.RecursosDelAdmin;
 
-import clases.Persona;
-import ModuloSuperAdmin.PanelUsuarios;
+import Clases.Cultivos;
+import ModuloAdmin.PanelCultivosAdmin;
 import Principal.Alert;
 import Principal.ConsumoAPI;
 import com.google.gson.Gson;
@@ -10,35 +10,36 @@ import com.google.gson.JsonObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EliminarAdmin extends javax.swing.JFrame {
 
-    PanelUsuarios ventanaDashboard;
+public class EliminarCultivo extends javax.swing.JFrame {
+
+    PanelCultivosAdmin ventanaDashboard;
     ConsumoAPI ejemplo = new ConsumoAPI();
     Gson gson = new Gson();
-    Persona DatosPersona;
+    Cultivos DatosCultivo;
     
-    public EliminarAdmin(PanelUsuarios ventanaDashboard, Persona temp) {
+    public EliminarCultivo(PanelCultivosAdmin ventanaDashboard, Cultivos temp) {       
         this.ventanaDashboard = ventanaDashboard;
-        this.DatosPersona = temp;
-        
+        this.DatosCultivo = temp;
+ 
         initComponents();
         initAlternComponents();
     }
-    
+
     public void initAlternComponents(){
         setLocationRelativeTo(null);
         setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
-        etqInfoEliminar1.setText("¿Desea eliminar al usuario "+DatosPersona.getNombre()+" "+DatosPersona.getApellido());
-        etqInfoEliminar2.setText("identificado con cedula "+DatosPersona.getCedula()+"?");
+        etqInfoEliminar1.setText("¿Desea eliminar al cultivo "+DatosCultivo.getNombre());
+        etqInfoEliminar2.setText("de la finca "+DatosCultivo.getId_finca()+"?");
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         PanelHeader = new javax.swing.JPanel();
         etqEliminar = new javax.swing.JLabel();
-        etqAdmin = new javax.swing.JLabel();
+        etqCultivo = new javax.swing.JLabel();
         LogoGestor = new javax.swing.JLabel();
         PanelInfo = new javax.swing.JPanel();
         etqInfoEliminar1 = new javax.swing.JLabel();
@@ -47,7 +48,7 @@ public class EliminarAdmin extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Eliminar Usuario - Gestor AgroIndustrial");
+        setTitle("Eliminar Cultivo - Gestor AgroIndustrial");
         setResizable(false);
 
         PanelHeader.setBackground(new java.awt.Color(0, 0, 0));
@@ -56,9 +57,9 @@ public class EliminarAdmin extends javax.swing.JFrame {
         etqEliminar.setForeground(new java.awt.Color(255, 255, 255));
         etqEliminar.setText("ELIMINAR");
 
-        etqAdmin.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
-        etqAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        etqAdmin.setText("ADMINISTRADOR");
+        etqCultivo.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        etqCultivo.setForeground(new java.awt.Color(255, 255, 255));
+        etqCultivo.setText("CULTIVO");
 
         LogoGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogoDashboard.png"))); // NOI18N
 
@@ -67,21 +68,21 @@ public class EliminarAdmin extends javax.swing.JFrame {
         PanelHeaderLayout.setHorizontalGroup(
             PanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelHeaderLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(22, 22, 22)
                 .addGroup(PanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etqAdmin)
+                    .addComponent(etqCultivo)
                     .addComponent(etqEliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LogoGestor)
-                .addGap(22, 22, 22))
+                .addGap(21, 21, 21))
         );
         PanelHeaderLayout.setVerticalGroup(
             PanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelHeaderLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addComponent(etqEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etqAdmin)
+                .addComponent(etqCultivo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelHeaderLayout.createSequentialGroup()
                 .addContainerGap()
@@ -93,30 +94,27 @@ public class EliminarAdmin extends javax.swing.JFrame {
 
         etqInfoEliminar1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         etqInfoEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etqInfoEliminar1.setText("¿Desea eliminar al usuario");
+        etqInfoEliminar1.setText("¿Desea eliminar el cultivo");
 
         etqInfoEliminar2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         etqInfoEliminar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etqInfoEliminar2.setText("identificado con cedula");
+        etqInfoEliminar2.setText("de la finca");
 
         btnCancelar.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         btnCancelar.setText("CANCELAR");
         btnCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        btnCancelar.setFocusable(false);
-        btnCancelar.setPreferredSize(new java.awt.Dimension(155, 35));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
 
-        btnEliminar.setBackground(new java.awt.Color(153, 255, 51));
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 153));
         btnEliminar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        btnEliminar.setFocusable(false);
-        btnEliminar.setPreferredSize(new java.awt.Dimension(155, 35));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -128,30 +126,30 @@ public class EliminarAdmin extends javax.swing.JFrame {
         PanelInfoLayout.setHorizontalGroup(
             PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelInfoLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(PanelInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etqInfoEliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqInfoEliminar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(etqInfoEliminar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqInfoEliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(PanelInfoLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         PanelInfoLayout.setVerticalGroup(
             PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelInfoLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(56, 56, 56)
                 .addComponent(etqInfoEliminar1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqInfoEliminar2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,29 +175,29 @@ public class EliminarAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-
-        if (DatosPersona.getCedula() != null){
+        if (DatosCultivo.getId_cultivo() != null){
             
             Map<String, String> deleteData = new HashMap<>();
-            deleteData.put("cedula", DatosPersona.getCedula());
-            System.out.println("Consumo DELETE: " + ejemplo.consumoPOST("http://localhost/ApiPhp-AgroGestor/usuarios/Delete.php", deleteData));
+            deleteData.put("id_cultivo", DatosCultivo.getId_cultivo());
             
-            String respuesta = ejemplo.consumoPOST("http://localhost/ApiPhp-AgroGestor/usuarios/Delete.php", deleteData);
+            String respuesta = ejemplo.consumoPOST("http://localhost/ApiPhp-AgroGestor/cultivos/DeleteCultivoEnFinca.php", deleteData);
+            System.out.println(respuesta);
+            
             JsonObject jsonObject = gson.fromJson(respuesta, JsonObject.class);
             String status = jsonObject.get("status").getAsString();  
             
             if (status.equals("true")){
                 Alert alerta = new Alert("Borrado Exitoso!", "El usuario se elimino correctamente", "success");
-                
                 this.ventanaDashboard.cargarDatos();
                 dispose();
             }else if(status.equals("false")){
                 Alert alerta = new Alert("Borrado Erroneo!", "El usuario NO se elimino correctamente", "error");    
             }
         }
+        
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LogoGestor;
@@ -207,7 +205,7 @@ public class EliminarAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel PanelInfo;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JLabel etqAdmin;
+    private javax.swing.JLabel etqCultivo;
     private javax.swing.JLabel etqEliminar;
     private javax.swing.JLabel etqInfoEliminar1;
     private javax.swing.JLabel etqInfoEliminar2;

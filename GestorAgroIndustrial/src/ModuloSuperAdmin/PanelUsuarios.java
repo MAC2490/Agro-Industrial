@@ -1,6 +1,4 @@
-
 package ModuloSuperAdmin;
-
 
 import Clases.*;
 import ModuloSuperAdmin.RecursosAdmins.*;
@@ -23,13 +21,14 @@ import javax.swing.table.DefaultTableModel;
 public class PanelUsuarios extends javax.swing.JPanel {
 
     ConsumoAPI ejemplo = new ConsumoAPI();
+    Persona[] persona = null;
     DefaultTableModel modelo;
     Gson gson = new Gson();
-    
+
     public PanelUsuarios() {
         initComponents();
         initAlternComponents();
-        cargarDatos();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -143,93 +142,75 @@ public class PanelUsuarios extends javax.swing.JPanel {
         ventana.setVisible(true);
     }//GEN-LAST:event_btnAgregarUserActionPerformed
 
-    public void cargarDatos() {
-        String select = ejemplo.consumoGET("http://localhost/ApiPhp-AgroGestor/usuarios/Obtener.php"); 
-        JsonObject jsonObject = JsonParser.parseString(select).getAsJsonObject();
-        JsonArray registros = jsonObject.getAsJsonArray("registros");
-        List<Persona> personas = new ArrayList<>();
-        
-        for (JsonElement elemento : registros) {
-            JsonObject registro = elemento.getAsJsonObject();
-
-            String id = registro.get("id_usuario").getAsString();
-            String cedula = registro.get("cedula").getAsString();
-            String nombre = registro.get("nombre").getAsString();
-            String apellido = registro.get("apellido").getAsString();
-            String estado = registro.get("estado").getAsString();;
-            String rol = registro.get("rol").getAsString();
-            String password = registro.get("password").getAsString();
-
-            Persona persona = new Persona(id, cedula, nombre, apellido, estado, rol, password);
-            personas.add(persona);
-        }
-        
-        for (Persona persona : personas) {
-            
-            JButton btn_editar = new JButton("Editar");
-            JButton btn_eliminar = new JButton("Borrar");
-            
-            Color BlueButton = Color.decode("#4BC8FF");
-            Color RedButton = Color.decode("#FF6446");
-            btn_editar.setFocusable(false);
-            btn_eliminar.setFocusable(false);
-
-
-            btn_editar.setBackground(BlueButton);
-            btn_eliminar.setBackground(RedButton);
-            
-            btn_editar.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    editarUsuario(persona);
-                }
-            });
-            
-            btn_eliminar.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    eliminarPersona(persona);
-                }
-            });
-            
-            Object[] fila = new Object[9]; // Ajusta el tamaño según la cantidad de columnas
-            fila[0] = persona.getId_usuario();
-            fila[1] = persona.getCedula();
-            fila[2] = persona.getNombre();
-            fila[3] = persona.getApellido();
-            fila[4] = persona.getEstado();
-            fila[5] = persona.getRol();
-            fila[6] = persona.getPassword();
-            fila[7] = btn_editar;
-            fila[8] = btn_eliminar;
-            modelo.addRow(fila);
-        }
+    public void initAlternComponents() {
+        cargarDatos();
     }
 
-    public void initAlternComponents(){
+    public void cargarDatos() {
+
         modelo = (DefaultTableModel) tabladatos.getModel();
+
         this.tabladatos.getColumn("EDITAR").setCellRenderer(new ButtonRenderer());
         this.tabladatos.getColumn("EDITAR").setCellEditor(new ButtonEditor(new JCheckBox()));
 
         this.tabladatos.getColumn("ELIMINAR").setCellRenderer(new ButtonRenderer());
         this.tabladatos.getColumn("ELIMINAR").setCellEditor(new ButtonEditor(new JCheckBox()));
+        modelo.setNumRows(0);
+        String select = ejemplo.consumoGET("http://localhost/ApiPhp-AgroGestor/usuarios/Obtener.php");
+        
+        
+        JsonObject jsonObject = JsonParser.parseString(select).getAsJsonObject();
+        JsonArray registros = jsonObject.getAsJsonArray("registros");
+        
+        persona = new Persona[registros.size()];
+        for (int i = 0; i < registros.size(); i++) {
+            Gson gson = new Gson();
+            persona[i] = (Persona) gson.fromJson((JsonElement) registros.get(i).getAsJsonObject(), Persona.class);
+            String id =persona[i].getId_usuario();
+            String cedula = persona[i].getCedula();
+            String nombre = persona[i].getNombre(); 
+            String apellido =persona[i].getApellido(); 
+            String estado =persona[i].getEstado();
+            String rol = persona[i].getRol();
+            String password = persona[i].getPassword();
+
+           
+
+            JButton btn_editar = new JButton("Editar");
+            JButton btn_eliminar = new JButton("Borrar");
+
+            Color BlueButton = Color.decode("#4BC8FF");
+            Color RedButton = Color.decode("#FF6446");
+            btn_editar.setFocusable(false);
+            btn_eliminar.setFocusable(false);
+
+            btn_editar.setBackground(BlueButton);
+            btn_eliminar.setBackground(RedButton);
+
+            final PanelUsuarios plantilla = this;
+            final int posicion=i;
+            btn_editar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    EditarAdmin ventana = new EditarAdmin(plantilla,persona[posicion]);
+                    ventana.setVisible(true);
+                }
+            });
+
+            btn_eliminar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    EliminarAdmin ventana = new EliminarAdmin(plantilla, persona[posicion]);
+                    ventana.setVisible(true);
+                }
+            });
+            Object[] temporal = new Object[]{id,cedula,nombre,apellido,estado,rol,password,btn_editar,btn_eliminar};
+            modelo.addRow(temporal);
+        }
+
     }
-    
-    public void editarUsuario(Persona temp){
-        EditarAdmin ventana = new EditarAdmin(this, temp);
-        ventana.setVisible(true);
-    }
-    
-    public void eliminarPersona(Persona temp){
-        EliminarAdmin ventana = new EliminarAdmin(this, temp);
-        ventana.setVisible(true);
-    }
-    
-    public void actualizarTabla(){
-        repaint();
-        revalidate();
-    }
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelHeader;
     private javax.swing.JButton btnAgregarUser;

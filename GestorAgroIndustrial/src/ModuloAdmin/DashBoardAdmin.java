@@ -118,6 +118,11 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         btnCultivos.setText("CULTIVOS");
         btnCultivos.setBorderPainted(false);
         btnCultivos.setFocusable(false);
+        btnCultivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCultivosActionPerformed(evt);
+            }
+        });
 
         btnInsumos.setBackground(new java.awt.Color(0, 0, 102));
         btnInsumos.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
@@ -302,6 +307,17 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         repaint();
         revalidate();
     }//GEN-LAST:event_btnPerfilActionPerformed
+
+    private void btnCultivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCultivosActionPerformed
+        PanelPrincipal.removeAll();
+        
+        PanelCultivosAdmin temporal = new PanelCultivosAdmin(SesionUsuario);
+        temporal.setSize(PanelPrincipal.getSize());
+        temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
+        PanelPrincipal.add(temporal);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_btnCultivosActionPerformed
 
     
 

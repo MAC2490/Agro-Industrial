@@ -173,7 +173,7 @@ public class DashBoard extends javax.swing.JFrame {
 
         btnRegistros.setBackground(new java.awt.Color(10, 214, 61));
         btnRegistros.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        btnRegistros.setText("REGISTROS");
+        btnRegistros.setText("PRODUCCIÓN");
         btnRegistros.setBorderPainted(false);
         btnRegistros.setFocusable(false);
 
@@ -230,7 +230,7 @@ public class DashBoard extends javax.swing.JFrame {
 
         etqDevelopers.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         etqDevelopers.setForeground(new java.awt.Color(255, 255, 255));
-        etqDevelopers.setText("Desarrollado Por AdsoDev's");
+        etqDevelopers.setText("Desarrollado Por EnginnerSoft");
 
         javax.swing.GroupLayout PanelFooterLayout = new javax.swing.GroupLayout(PanelFooter);
         PanelFooter.setLayout(PanelFooterLayout);
