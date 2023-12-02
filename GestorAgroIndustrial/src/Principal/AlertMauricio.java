@@ -45,6 +45,7 @@ public class AlertMauricio extends javax.swing.JFrame {
         btnAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         contentPrincipal.setBackground(new java.awt.Color(153, 255, 153));
 

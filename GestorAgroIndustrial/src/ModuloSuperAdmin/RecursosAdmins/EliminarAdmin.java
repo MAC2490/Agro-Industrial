@@ -189,7 +189,9 @@ public class EliminarAdmin extends javax.swing.JFrame {
             String status = jsonObject.get("status").getAsString();  
             
             if (status.equals("true")){
-                Alert alerta = new Alert("Borrado Exitoso!", "El usuario se elimino correctamente", "success");    
+                Alert alerta = new Alert("Borrado Exitoso!", "El usuario se elimino correctamente", "success");
+                
+                this.ventanaDashboard.cargarDatos();
                 dispose();
             }else if(status.equals("false")){
                 Alert alerta = new Alert("Borrado Erroneo!", "El usuario NO se elimino correctamente", "error");    
