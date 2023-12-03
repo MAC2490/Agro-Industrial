@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2023 a las 01:37:26
+-- Tiempo de generación: 21-11-2023 a las 01:19:27
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -54,7 +54,6 @@ INSERT INTO `cultivos` (`id_cultivo`, `nombre`, `descripcion`, `tiempo_cosecha`,
 --
 
 CREATE TABLE `cultivos_finca` (
-  `id_cultivos_finca` int(11) NOT NULL,
   `id_finca` int(11) NOT NULL,
   `id_cultivo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -63,13 +62,13 @@ CREATE TABLE `cultivos_finca` (
 -- Volcado de datos para la tabla `cultivos_finca`
 --
 
-INSERT INTO `cultivos_finca` (`id_cultivos_finca`, `id_finca`, `id_cultivo`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 2, 3),
-(4, 2, 4),
-(5, 3, 5),
-(6, 3, 6);
+INSERT INTO `cultivos_finca` (`id_finca`, `id_cultivo`) VALUES
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 2),
+(5, 3),
+(6, 3);
 
 -- --------------------------------------------------------
 
@@ -90,8 +89,8 @@ CREATE TABLE `fincas` (
 --
 
 INSERT INTO `fincas` (`id_finca`, `nombre`, `direccion`, `img`, `id_usuario`) VALUES
-(1, 'Finca B', 'Calle 123, Ciudad', '/img/finca 1.png', 2),
-(2, 'Finca f', 'Avenida XYZ, Pueblo', '/img/finca 1.png', 7),
+(1, 'Finca B', 'Calle 123, Ciudad', '/img/finca 1.png', NULL),
+(2, 'Finca f', 'Avenida XYZ, Pueblo', '/img/finca 1.png', NULL),
 (3, 'Finca C', 'Carretera 456, Villa', NULL, 3),
 (4, 'Finca D', 'Ruta 789, Pueblo', NULL, 4),
 (5, 'Finca E', 'Avenida 456, Ciudad', NULL, 5),
@@ -136,7 +135,6 @@ INSERT INTO `insumos` (`insumos_id`, `name`, `serial`, `tipo_insumo`, `unidada_m
 
 CREATE TABLE `insumos_x_cultivos` (
   `id_cultivo` int(11) NOT NULL,
-  `id_finca` int(11) NOT NULL,
   `id_insumo` int(11) NOT NULL,
   `valor_aprox` int(11) DEFAULT NULL,
   `cantidad_pro` int(11) DEFAULT NULL,
@@ -148,14 +146,13 @@ CREATE TABLE `insumos_x_cultivos` (
 -- Volcado de datos para la tabla `insumos_x_cultivos`
 --
 
-INSERT INTO `insumos_x_cultivos` (`id_cultivo`, `id_finca`, `id_insumo`, `valor_aprox`, `cantidad_pro`, `unidad_medida`, `fecha`) VALUES
-(1, 1, 1, 10, 1, 'KILOS', '2023-01-05'),
-(1, 2, 2, 5, 1, 'KILOS', '2023-01-05'),
-(1, 4, 4, 12, 15, 'ARROBA', '2023-11-25'),
-(2, 3, 2, 7, 1, 'KILOS', '2023-02-10'),
-(4, 5, 4, 15, 1, 'LIBRAS', '2023-04-20'),
-(4, 6, 5, 25, 1, 'KILOS', '2023-04-20'),
-(5, 4, 3, 45, 15, 'KILOS', '2023-11-25');
+INSERT INTO `insumos_x_cultivos` (`id_cultivo`, `id_insumo`, `valor_aprox`, `cantidad_pro`, `unidad_medida`, `fecha`) VALUES
+(1, 1, 10, 1, 'KILOS', '2023-01-05'),
+(1, 2, 5, 1, 'KILOS', '2023-01-05'),
+(2, 2, 7, 1, 'KILOS', '2023-02-10'),
+(3, 3, 8, 1, 'ARROBA', '2023-03-15'),
+(4, 4, 15, 1, 'LIBRAS', '2023-04-20'),
+(4, 5, 25, 1, 'KILOS', '2023-04-20');
 
 -- --------------------------------------------------------
 
@@ -188,7 +185,7 @@ INSERT INTO `insumo_x_finca` (`id_finca`, `id_insumo`) VALUES
 
 CREATE TABLE `produccion_cultivos` (
   `id_produccion` int(11) NOT NULL,
-  `id_cultivos_finca` int(11) NOT NULL,
+  `cultivos_id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `fecha` date DEFAULT NULL,
   `total` int(11) DEFAULT NULL
@@ -198,13 +195,13 @@ CREATE TABLE `produccion_cultivos` (
 -- Volcado de datos para la tabla `produccion_cultivos`
 --
 
-INSERT INTO `produccion_cultivos` (`id_produccion`, `id_cultivos_finca`, `cantidad`, `fecha`, `total`) VALUES
-(1, 1, 100, '2023-01-01', 500),
-(2, 2, 150, '2023-02-15', 750),
-(3, 3, 200, '2023-03-30', 1000),
-(4, 4, 120, '2023-04-10', 600),
-(5, 5, 180, '2023-05-20', 900),
-(6, 6, 90, '2023-06-05', 450);
+INSERT INTO `produccion_cultivos` (`id_produccion`, `cultivos_id`, `cantidad`, `fecha`, `total`) VALUES
+(1, 1, 50, '2023-04-10', 300),
+(2, 2, 30, '2023-05-15', 200),
+(3, 3, 20, '2023-04-20', 100),
+(4, 4, 45, '2023-06-05', 270),
+(5, 5, 25, '2023-07-10', 150),
+(6, 6, 35, '2023-06-20', 210);
 
 -- --------------------------------------------------------
 
@@ -227,13 +224,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `cedula`, `nombre`, `apellido`, `estado`, `rol`, `password`) VALUES
-(1, '1', 'Juan Esteban', 'Pechene Colorado', 'ACTIVO', 'SUPER ADMIN', '1'),
-(2, '1088238440', 'Mauricio', 'Aguirre Cardona', 'ACTIVO', 'ADMIN', '67890'),
-(3, '123', 'Sebastian', 'Garcia Murillo', 'ACTIVO', 'ADMIN', '10293'),
-(4, '1090332917', 'Jhon Alberth', 'Aricapa Pinto', 'ACTIVO', 'ADMIN', '10'),
-(5, '12345', 'Jairo Alberto', 'Boveda De La  Cruz', 'ACTIVO', 'ADMIN', '1'),
-(6, '108800', 'Oscar', 'Java', 'ACTIVO', 'ADMIN', '2'),
-(7, '108801', 'sadas', 'asda', 'ACTIVO', 'ADMIN', '1');
+(1, '1', 'Juan Sebastian', 'Pechene Colorado', 'ACTIVO', 'SUPER ADMIN', '1'),
+(2, '1088238440', 'Mauricio', 'Aguirre Cardona', 'ACTIVO', 'SUPER ADMIN', '67890'),
+(3, '123', 'Sebastian', 'Garcia Murillo', 'ACTIVO', 'SUPER ADMIN', '10293'),
+(4, '1090332917', 'Jhon Alberth', 'Aricapa Pinto', 'ACTIVO', 'SUPER ADMIN', '01928'),
+(5, '67589031', 'Jairo Alberto', 'Boveda De La  Cruz', 'ACTIVO', 'ADMIN', '55555'),
+(6, '1088004610', 'Oscar', 'Java', 'ACTIVO', 'ADMIN', 'TeamJava');
 
 --
 -- Índices para tablas volcadas
@@ -249,8 +245,7 @@ ALTER TABLE `cultivos`
 -- Indices de la tabla `cultivos_finca`
 --
 ALTER TABLE `cultivos_finca`
-  ADD PRIMARY KEY (`id_cultivos_finca`),
-  ADD KEY `id_finca` (`id_finca`),
+  ADD PRIMARY KEY (`id_finca`,`id_cultivo`),
   ADD KEY `id_cultivo` (`id_cultivo`);
 
 --
@@ -271,8 +266,7 @@ ALTER TABLE `insumos`
 --
 ALTER TABLE `insumos_x_cultivos`
   ADD PRIMARY KEY (`id_cultivo`,`id_insumo`),
-  ADD KEY `id_insumo` (`id_insumo`),
-  ADD KEY `id_finca` (`id_finca`);
+  ADD KEY `id_insumo` (`id_insumo`);
 
 --
 -- Indices de la tabla `insumo_x_finca`
@@ -286,7 +280,7 @@ ALTER TABLE `insumo_x_finca`
 --
 ALTER TABLE `produccion_cultivos`
   ADD PRIMARY KEY (`id_produccion`),
-  ADD KEY `id_cultivos_finca` (`id_cultivos_finca`);
+  ADD KEY `cultivos_id` (`cultivos_id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -303,12 +297,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `cultivos`
   MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `cultivos_finca`
---
-ALTER TABLE `cultivos_finca`
-  MODIFY `id_cultivos_finca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `fincas`
@@ -332,7 +320,7 @@ ALTER TABLE `produccion_cultivos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -356,8 +344,7 @@ ALTER TABLE `fincas`
 --
 ALTER TABLE `insumos_x_cultivos`
   ADD CONSTRAINT `insumos_x_cultivos_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`),
-  ADD CONSTRAINT `insumos_x_cultivos_ibfk_2` FOREIGN KEY (`id_insumo`) REFERENCES `insumos` (`insumos_id`),
-  ADD CONSTRAINT `insumos_x_cultivos_ibfk_3` FOREIGN KEY (`id_finca`) REFERENCES `fincas` (`id_finca`);
+  ADD CONSTRAINT `insumos_x_cultivos_ibfk_2` FOREIGN KEY (`id_insumo`) REFERENCES `insumos` (`insumos_id`);
 
 --
 -- Filtros para la tabla `insumo_x_finca`
@@ -370,7 +357,7 @@ ALTER TABLE `insumo_x_finca`
 -- Filtros para la tabla `produccion_cultivos`
 --
 ALTER TABLE `produccion_cultivos`
-  ADD CONSTRAINT `produccion_cultivos_ibfk_1` FOREIGN KEY (`id_cultivos_finca`) REFERENCES `cultivos_finca` (`id_cultivos_finca`);
+  ADD CONSTRAINT `produccion_cultivos_ibfk_1` FOREIGN KEY (`cultivos_id`) REFERENCES `cultivos` (`id_cultivo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

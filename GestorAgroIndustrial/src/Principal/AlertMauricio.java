@@ -1,14 +1,7 @@
 
 package Principal;
 
-import java.awt.Image;
 import javax.swing.ImageIcon;
-import java.awt.Button;
-import java.awt.FlowLayout;
-import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 public class AlertMauricio extends javax.swing.JFrame {
 

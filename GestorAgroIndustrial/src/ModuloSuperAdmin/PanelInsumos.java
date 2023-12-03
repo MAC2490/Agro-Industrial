@@ -157,6 +157,8 @@ public class PanelInsumos extends javax.swing.JPanel {
             .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         jButton1.setBackground(new java.awt.Color(153, 255, 51));
         jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mas.png"))); // NOI18N
@@ -168,8 +170,18 @@ public class PanelInsumos extends javax.swing.JPanel {
             }
         });
 
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
+
+        tabla_insumos.setBackground(new java.awt.Color(255, 255, 255));
         tabla_insumos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -188,6 +200,9 @@ public class PanelInsumos extends javax.swing.JPanel {
             }
         });
         tabla_insumos.setFocusable(false);
+        tabla_insumos.setGridColor(new java.awt.Color(255, 255, 255));
+        tabla_insumos.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tabla_insumos.setSelectionForeground(new java.awt.Color(0, 0, 0));
         tabla_insumos.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tabla_insumos);
         if (tabla_insumos.getColumnModel().getColumnCount() > 0) {
@@ -216,8 +231,11 @@ public class PanelInsumos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        jScrollPane2.getAccessibleContext().setAccessibleParent(tabla_insumos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

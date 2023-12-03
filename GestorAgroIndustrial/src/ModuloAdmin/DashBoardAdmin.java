@@ -26,10 +26,17 @@ public class DashBoardAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        PanelFooter = new javax.swing.JPanel();
+        etqDevelopers = new javax.swing.JLabel();
+        PanelHeaderA = new javax.swing.JPanel();
+        etqDashBoard = new javax.swing.JLabel();
+        etqRol = new javax.swing.JLabel();
         PanelHeaderB = new javax.swing.JPanel();
         LogoGestor = new javax.swing.JLabel();
         etqGestor = new javax.swing.JLabel();
         etqAgroIndustrial = new javax.swing.JLabel();
+        PanelPrincipal = new javax.swing.JPanel();
         panelSideBar = new javax.swing.JPanel();
         btnFincas = new javax.swing.JButton();
         btnPerfil = new javax.swing.JButton();
@@ -38,145 +45,13 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         btnInsumos = new javax.swing.JButton();
         btnRegistros = new javax.swing.JButton();
         btnCerrarSession = new javax.swing.JButton();
-        PanelFooter = new javax.swing.JPanel();
-        etqDevelopers = new javax.swing.JLabel();
-        PanelHeaderA = new javax.swing.JPanel();
-        etqDashBoard = new javax.swing.JLabel();
-        etqRol = new javax.swing.JLabel();
-        PanelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("DashBoard Admin - Gestor AgroIndustrial");
+        setUndecorated(true);
         setResizable(false);
 
-        PanelHeaderB.setBackground(new java.awt.Color(0, 0, 0));
-
-        LogoGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogoDashboard.png"))); // NOI18N
-
-        etqGestor.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
-        etqGestor.setForeground(new java.awt.Color(255, 255, 255));
-        etqGestor.setText("GESTOR");
-
-        etqAgroIndustrial.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
-        etqAgroIndustrial.setForeground(new java.awt.Color(255, 255, 255));
-        etqAgroIndustrial.setText("AGRO-INDUSTRIAL");
-
-        javax.swing.GroupLayout PanelHeaderBLayout = new javax.swing.GroupLayout(PanelHeaderB);
-        PanelHeaderB.setLayout(PanelHeaderBLayout);
-        PanelHeaderBLayout.setHorizontalGroup(
-            PanelHeaderBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelHeaderBLayout.createSequentialGroup()
-                .addContainerGap(477, Short.MAX_VALUE)
-                .addGroup(PanelHeaderBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etqGestor, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(etqAgroIndustrial, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LogoGestor)
-                .addGap(43, 43, 43))
-        );
-        PanelHeaderBLayout.setVerticalGroup(
-            PanelHeaderBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LogoGestor, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-            .addGroup(PanelHeaderBLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(etqGestor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etqAgroIndustrial)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelSideBar.setBackground(new java.awt.Color(0, 0, 153));
-
-        btnFincas.setBackground(new java.awt.Color(0, 0, 102));
-        btnFincas.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        btnFincas.setForeground(new java.awt.Color(255, 255, 255));
-        btnFincas.setText("MI FINCA");
-        btnFincas.setBorderPainted(false);
-        btnFincas.setFocusable(false);
-        btnFincas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFincasActionPerformed(evt);
-            }
-        });
-
-        btnPerfil.setBackground(new java.awt.Color(0, 0, 153));
-        btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ProfileButton.png"))); // NOI18N
-        btnPerfil.setBorderPainted(false);
-        btnPerfil.setFocusable(false);
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
-            }
-        });
-
-        separador.setBackground(new java.awt.Color(255, 255, 255));
-        separador.setForeground(new java.awt.Color(255, 255, 255));
-
-        btnCultivos.setBackground(new java.awt.Color(0, 0, 102));
-        btnCultivos.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        btnCultivos.setForeground(new java.awt.Color(255, 255, 255));
-        btnCultivos.setText("CULTIVOS");
-        btnCultivos.setBorderPainted(false);
-        btnCultivos.setFocusable(false);
-
-        btnInsumos.setBackground(new java.awt.Color(0, 0, 102));
-        btnInsumos.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        btnInsumos.setForeground(new java.awt.Color(255, 255, 255));
-        btnInsumos.setText("INSUMOS");
-        btnInsumos.setBorderPainted(false);
-        btnInsumos.setFocusable(false);
-
-        btnRegistros.setBackground(new java.awt.Color(0, 0, 102));
-        btnRegistros.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        btnRegistros.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistros.setText("PRODUCCIÓN");
-        btnRegistros.setBorderPainted(false);
-        btnRegistros.setFocusable(false);
-
-        btnCerrarSession.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        btnCerrarSession.setText("CERRAR SESSION");
-        btnCerrarSession.setBorderPainted(false);
-        btnCerrarSession.setFocusable(false);
-        btnCerrarSession.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSessionActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelSideBarLayout = new javax.swing.GroupLayout(panelSideBar);
-        panelSideBar.setLayout(panelSideBarLayout);
-        panelSideBarLayout.setHorizontalGroup(
-            panelSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnFincas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSideBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(separador)
-                .addContainerGap())
-            .addComponent(btnCultivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnCerrarSession, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-        );
-        panelSideBarLayout.setVerticalGroup(
-            panelSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSideBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnPerfil)
-                .addGap(5, 5, 5)
-                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFincas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCultivos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(btnCerrarSession, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelFooter.setBackground(new java.awt.Color(0, 0, 0));
         PanelFooter.setPreferredSize(new java.awt.Dimension(430, 40));
@@ -202,6 +77,8 @@ public class DashBoardAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.add(PanelFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 540, 780, 40));
+
         PanelHeaderA.setBackground(new java.awt.Color(0, 0, 0));
 
         etqDashBoard.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
@@ -218,7 +95,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         PanelHeaderA.setLayout(PanelHeaderALayout);
         PanelHeaderALayout.setHorizontalGroup(
             PanelHeaderALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(etqDashBoard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addComponent(etqDashBoard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(etqRol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         PanelHeaderALayout.setVerticalGroup(
@@ -228,8 +105,48 @@ public class DashBoardAdmin extends javax.swing.JFrame {
                 .addComponent(etqDashBoard)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqRol)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
+
+        jPanel1.add(PanelHeaderA, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 250, 90));
+
+        PanelHeaderB.setBackground(new java.awt.Color(0, 0, 0));
+
+        LogoGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogoDashboard.png"))); // NOI18N
+
+        etqGestor.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        etqGestor.setForeground(new java.awt.Color(255, 255, 255));
+        etqGestor.setText("GESTOR");
+
+        etqAgroIndustrial.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        etqAgroIndustrial.setForeground(new java.awt.Color(255, 255, 255));
+        etqAgroIndustrial.setText("AGRO-INDUSTRIAL");
+
+        javax.swing.GroupLayout PanelHeaderBLayout = new javax.swing.GroupLayout(PanelHeaderB);
+        PanelHeaderB.setLayout(PanelHeaderBLayout);
+        PanelHeaderBLayout.setHorizontalGroup(
+            PanelHeaderBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelHeaderBLayout.createSequentialGroup()
+                .addContainerGap(471, Short.MAX_VALUE)
+                .addGroup(PanelHeaderBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(etqGestor, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(etqAgroIndustrial, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LogoGestor)
+                .addGap(43, 43, 43))
+        );
+        PanelHeaderBLayout.setVerticalGroup(
+            PanelHeaderBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LogoGestor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PanelHeaderBLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(etqGestor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etqAgroIndustrial)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(PanelHeaderB, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 0, 780, 90));
 
         PanelPrincipal.setBackground(new java.awt.Color(222, 222, 222));
 
@@ -241,36 +158,90 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         );
         PanelPrincipalLayout.setVerticalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
+
+        jPanel1.add(PanelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 84, 780, 460));
+
+        panelSideBar.setBackground(new java.awt.Color(0, 0, 153));
+        panelSideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnFincas.setBackground(new java.awt.Color(0, 0, 102));
+        btnFincas.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnFincas.setForeground(new java.awt.Color(255, 255, 255));
+        btnFincas.setText("MI FINCA");
+        btnFincas.setBorderPainted(false);
+        btnFincas.setFocusable(false);
+        btnFincas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFincasActionPerformed(evt);
+            }
+        });
+        panelSideBar.add(btnFincas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 240, 45));
+
+        btnPerfil.setBackground(new java.awt.Color(0, 0, 153));
+        btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ProfileButton.png"))); // NOI18N
+        btnPerfil.setBorderPainted(false);
+        btnPerfil.setFocusable(false);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
+        panelSideBar.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 240, -1));
+
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        panelSideBar.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 82, 238, 10));
+
+        btnCultivos.setBackground(new java.awt.Color(0, 0, 102));
+        btnCultivos.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnCultivos.setForeground(new java.awt.Color(255, 255, 255));
+        btnCultivos.setText("CULTIVOS");
+        btnCultivos.setBorderPainted(false);
+        btnCultivos.setFocusable(false);
+        panelSideBar.add(btnCultivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 45));
+
+        btnInsumos.setBackground(new java.awt.Color(0, 0, 102));
+        btnInsumos.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnInsumos.setForeground(new java.awt.Color(255, 255, 255));
+        btnInsumos.setText("INSUMOS");
+        btnInsumos.setBorderPainted(false);
+        btnInsumos.setFocusable(false);
+        panelSideBar.add(btnInsumos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 251, 240, 45));
+
+        btnRegistros.setBackground(new java.awt.Color(0, 0, 102));
+        btnRegistros.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnRegistros.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistros.setText("PRODUCCIÓN");
+        btnRegistros.setBorderPainted(false);
+        btnRegistros.setFocusable(false);
+        panelSideBar.add(btnRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 240, 45));
+
+        btnCerrarSession.setBackground(new java.awt.Color(0, 0, 102));
+        btnCerrarSession.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnCerrarSession.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrarSession.setText("CERRAR SESSION");
+        btnCerrarSession.setBorderPainted(false);
+        btnCerrarSession.setFocusable(false);
+        btnCerrarSession.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSessionActionPerformed(evt);
+            }
+        });
+        panelSideBar.add(btnCerrarSession, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 411, 240, 40));
+
+        jPanel1.add(panelSideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 90, 250, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelHeaderA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelSideBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelFooter, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
-                    .addComponent(PanelHeaderB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelHeaderB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelHeaderA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelFooter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelSideBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -322,6 +293,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel etqDevelopers;
     private javax.swing.JLabel etqGestor;
     private javax.swing.JLabel etqRol;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelSideBar;
     private javax.swing.JSeparator separador;
     // End of variables declaration//GEN-END:variables

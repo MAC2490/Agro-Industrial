@@ -15,6 +15,4 @@
     }else{
         echo json_encode(404); // Datos vacios
     }
-
-    
 ?>

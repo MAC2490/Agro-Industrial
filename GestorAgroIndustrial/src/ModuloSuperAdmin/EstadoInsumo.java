@@ -38,7 +38,7 @@ public class EstadoInsumo extends javax.swing.JFrame {
         etqImagen = new javax.swing.JLabel();
         btnAceptar1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         etqMensaje.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         etqMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

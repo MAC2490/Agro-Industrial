@@ -25,10 +25,13 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         PanelDatosApp = new javax.swing.JPanel();
         LogoAgroGestor = new javax.swing.JLabel();
         etqNombreA = new javax.swing.JLabel();
         etqNombreB = new javax.swing.JLabel();
+        PanelHeader = new javax.swing.JPanel();
+        etqDevelopers = new javax.swing.JLabel();
         PanelLogin = new javax.swing.JPanel();
         ImgUser = new javax.swing.JLabel();
         etqDocumento = new javax.swing.JLabel();
@@ -39,12 +42,12 @@ public class Login extends javax.swing.JFrame {
         DisenoInferior = new javax.swing.JLabel();
         etqInfo = new javax.swing.JLabel();
         etqLogin = new javax.swing.JLabel();
-        PanelHeader = new javax.swing.JPanel();
-        etqDevelopers = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Session - Gestor AgroIndustrial");
         setResizable(false);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelDatosApp.setBackground(new java.awt.Color(153, 255, 51));
 
@@ -72,14 +75,43 @@ public class Login extends javax.swing.JFrame {
         PanelDatosAppLayout.setVerticalGroup(
             PanelDatosAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDatosAppLayout.createSequentialGroup()
-                .addGap(133, 133, 133)
+                .addGap(139, 139, 139)
                 .addComponent(LogoAgroGestor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(etqNombreA)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqNombreB)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
+
+        jPanel1.add(PanelDatosApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 640));
+
+        PanelHeader.setBackground(new java.awt.Color(0, 0, 0));
+
+        etqDevelopers.setBackground(new java.awt.Color(255, 255, 255));
+        etqDevelopers.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        etqDevelopers.setForeground(new java.awt.Color(255, 255, 255));
+        etqDevelopers.setText("Desarrollado Por AdsoDev's");
+        etqDevelopers.setToolTipText("");
+
+        javax.swing.GroupLayout PanelHeaderLayout = new javax.swing.GroupLayout(PanelHeader);
+        PanelHeader.setLayout(PanelHeaderLayout);
+        PanelHeaderLayout.setHorizontalGroup(
+            PanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelHeaderLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etqDevelopers)
+                .addContainerGap())
+        );
+        PanelHeaderLayout.setVerticalGroup(
+            PanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelHeaderLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(etqDevelopers)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(PanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 0, 660, 60));
 
         PanelLogin.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -135,7 +167,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(PanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campo_password, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etqPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
             .addGroup(PanelLoginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,7 +192,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(etqPassword, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(PanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelLoginLayout.createSequentialGroup()
-                        .addGap(18, 82, Short.MAX_VALUE)
+                        .addGap(18, 143, Short.MAX_VALUE)
                         .addComponent(DisenoInferior))
                     .addGroup(PanelLoginLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -172,49 +204,17 @@ public class Login extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        PanelHeader.setBackground(new java.awt.Color(0, 0, 0));
-
-        etqDevelopers.setBackground(new java.awt.Color(255, 255, 255));
-        etqDevelopers.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        etqDevelopers.setForeground(new java.awt.Color(255, 255, 255));
-        etqDevelopers.setText("Desarrollado Por EnginnerSoft");
-        etqDevelopers.setToolTipText("");
-
-        javax.swing.GroupLayout PanelHeaderLayout = new javax.swing.GroupLayout(PanelHeader);
-        PanelHeader.setLayout(PanelHeaderLayout);
-        PanelHeaderLayout.setHorizontalGroup(
-            PanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelHeaderLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(etqDevelopers)
-                .addContainerGap())
-        );
-        PanelHeaderLayout.setVerticalGroup(
-            PanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelHeaderLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(etqDevelopers)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+        jPanel1.add(PanelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 60, 660, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(PanelDatosApp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(PanelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(PanelDatosApp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -324,5 +324,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel etqNombreA;
     private javax.swing.JLabel etqNombreB;
     private javax.swing.JLabel etqPassword;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
