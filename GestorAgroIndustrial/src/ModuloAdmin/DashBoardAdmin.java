@@ -15,6 +15,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         
         initComponents();
         initAlternComponents();
+        this.defaultPanel();
     }
 
     public void initAlternComponents(){
@@ -216,6 +217,11 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         btnRegistros.setText("PRODUCCIÓN");
         btnRegistros.setBorderPainted(false);
         btnRegistros.setFocusable(false);
+        btnRegistros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrosActionPerformed(evt);
+            }
+        });
         panelSideBar.add(btnRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 240, 45));
 
         btnCerrarSession.setBackground(new java.awt.Color(0, 0, 102));
@@ -274,7 +280,20 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         revalidate();
     }//GEN-LAST:event_btnPerfilActionPerformed
 
-    
+    private void btnRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrosActionPerformed
+        this.defaultPanel();
+    }//GEN-LAST:event_btnRegistrosActionPerformed
+
+    public void defaultPanel(){
+        PanelPrincipal.removeAll();
+
+        PanelProduccion temporal = new PanelProduccion();
+        temporal.setSize(PanelPrincipal.getSize());
+        temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
+        PanelPrincipal.add(temporal);
+        repaint();
+        revalidate();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LogoGestor;
