@@ -1,13 +1,25 @@
 
 package Principal;
 
+import java.awt.Color;
+import static java.awt.Color.blue;
 import javax.swing.ImageIcon;
 
 public class AlertMauricio extends javax.swing.JFrame {
 
-    public AlertMauricio(String titulo, String mensaje, String tipo) {
+    public AlertMauricio(String titulo, String mensaje, String tipo, boolean color) {
         initComponents();
-
+        
+        if (color) {
+            Color colorPanel = new Color(51,70,191);
+            this.contentPrincipal.setBackground(colorPanel);
+            this.etqImagen.setBackground(colorPanel);
+            this.etqMensaje.setBackground(colorPanel);
+            this.etqTitulo.setBackground(colorPanel);
+            Color colorBtn = new Color(51,121,210);
+            this.btnAceptar.setBackground(colorBtn);
+        }
+        
         String textoIcono = "";
         if (tipo.equals("success")) {
             textoIcono = "verificado.gif";

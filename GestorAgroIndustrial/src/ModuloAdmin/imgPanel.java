@@ -4,12 +4,12 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-class ImgPanel extends JPanel {
+class imgPanel extends JPanel {
     private Image image;
 
-    public ImgPanel() {
+    public imgPanel() {
         // Cargar la imagen en el constructor
-        this.image = new ImageIcon(getClass().getResource("/img/finca_2.png")).getImage();
+        this.image = new ImageIcon(getClass().getResource("/img/finca.png")).getImage();
     }
 
     @Override

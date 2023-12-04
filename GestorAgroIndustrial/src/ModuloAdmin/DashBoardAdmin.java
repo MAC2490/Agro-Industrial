@@ -2,6 +2,7 @@
 package ModuloAdmin;
 
 import Principal.Login;
+import javax.swing.JPanel;
 
 
 public class DashBoardAdmin extends javax.swing.JFrame {
@@ -12,7 +13,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
     public DashBoardAdmin(Login ventanaLogin, String DatosUsuario) {
         this.ventanaLogin=ventanaLogin;
         this.SesionUsuario=DatosUsuario;
-        
+        System.out.println(DatosUsuario);
         initComponents();
         initAlternComponents();
         this.defaultPanel();
@@ -287,14 +288,14 @@ public class DashBoardAdmin extends javax.swing.JFrame {
     public void defaultPanel(){
         PanelPrincipal.removeAll();
 
-        PanelProduccion temporal = new PanelProduccion();
+        PanelProduccion temporal = new PanelProduccion(this.SesionUsuario);
         temporal.setSize(PanelPrincipal.getSize());
         temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
         PanelPrincipal.add(temporal);
         repaint();
         revalidate();
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LogoGestor;
     private javax.swing.JPanel PanelFooter;

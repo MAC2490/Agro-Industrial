@@ -23,6 +23,8 @@ import java.awt.event.FocusListener;
 import java.util.HashMap;
 import java.util.Map;
 import Principal.AlertMauricio;
+import java.awt.Color;
+import javax.swing.border.MatteBorder;
 
 
 public class PanelProduccion extends javax.swing.JPanel {
@@ -35,6 +37,10 @@ public class PanelProduccion extends javax.swing.JPanel {
     private boolean firstClick = true;
     public PanelProduccion() {
         initComponents();
+        this.jButton1.setOpaque(false);
+        this.jButton1.setContentAreaFilled(false);
+        this.jButton1.setBorderPainted(false);
+        this.jButton1.setForeground(Color.WHITE);
         this.back.setVisible(false);
         this.renderer = new DefaultTableCellRenderer();
         this.modal = (DefaultTableModel) table.getModel();
@@ -61,58 +67,70 @@ public class PanelProduccion extends javax.swing.JPanel {
         if (response != null) {
             JsonObject objectJson = JsonParser.parseString(response).getAsJsonObject();
             JsonArray dataArray = objectJson.get("list_crop").getAsJsonArray();
-            if (dataArray.size() == 0 && !typeList) {
-                this.back.setVisible(false);
-                this.alert("Busqueda fallida", "Sin resultados", "error");
-            }else if (!typeList){
-                this.back.setVisible(true);
-            }
-            if (dataArray.size() == 0) {
-                this.getData(true);
-                this.firstClick = true;
-                this.search.setText("Buscar...");
-            }
-            this.allData = new Object[dataArray.size() + 1][];
-            this.allData[0] = this.header;
-            for (int i = 0; i < dataArray.size(); i++) {
-                JsonObject temp = dataArray.get(i).getAsJsonObject();
+            if (dataArray.size() != 0) {
                 
-                JsonElement crop_name = temp.get("nombre_cultivo");
-                JsonElement farm_name = temp.get("nombre_finca");
-                JsonElement supplies_name = temp.get("nombre_insumo");
-                JsonElement value_supplies = temp.get("valor_aprox");
-                JsonElement amount_supplies = temp.get("cantidad_pro");
-                JsonElement unit_measurement = temp.get("unidad_medida"); // Unidad de medida
-                JsonElement amount_product = temp.get("cantidad");
-                JsonElement date = temp.get("fecha");
-                JsonElement total = temp.get("total");
-                JsonElement sale_price = temp.get("precio_venta");
-                float profits = (sale_price.getAsInt()*total.getAsFloat()); // Ganancias 
-                String formatted = this.currencyFormat.format(profits);
-                Object [] data ={
-                                  crop_name.getAsString(),
-                                  farm_name.getAsString(),
-                                  supplies_name.getAsString(),
-                                  value_supplies.getAsString(),
-                                  amount_supplies.getAsString()+" "+unit_measurement.getAsString(),
-                                  amount_product.getAsString(),
-                                  total.getAsString(),
-                                  formatted,
-                                  date.getAsString(),
-                                };
-                this.modal.addRow(data);
-                this.allData[i + 1] = new Object[]  {
-                                                        crop_name.getAsString(),
-                                                        farm_name.getAsString(),
-                                                        supplies_name.getAsString(),
-                                                        value_supplies.getAsString(),
-                                                        amount_supplies.getAsString()+" "+unit_measurement.getAsString(),
-                                                        amount_product.getAsString(),
-                                                        total.getAsString(),
-                                                        formatted,
-                                                        date.getAsString(),
-                                                    };
+                if (dataArray.size() == 0 && !typeList) {
+                    this.back.setVisible(false);
+                    this.alert("Busqueda fallida", "Sin resultados", "error");
+                }else if (!typeList){
+                    this.back.setVisible(true);
+                }
+                if (dataArray.size() == 0) {
+                    this.getData(true);
+                    this.firstClick = true;
+                    this.search.setText("Buscar...");
+                }
+                this.allData = new Object[dataArray.size() + 1][];
+                this.allData[0] = this.header;
+                for (int i = 0; i < dataArray.size(); i++) {
+                    JsonObject temp = dataArray.get(i).getAsJsonObject();
+
+                    JsonElement crop_name = temp.get("nombre_cultivo");
+                    JsonElement farm_name = temp.get("nombre_finca");
+                    JsonElement supplies_name = temp.get("nombre_insumo");
+                    JsonElement value_supplies = temp.get("valor_aprox");
+                    JsonElement amount_supplies = temp.get("cantidad_pro");
+                    JsonElement unit_measurement = temp.get("unidad_medida"); // Unidad de medida
+                    JsonElement amount_product = temp.get("cantidad");
+                    JsonElement date = temp.get("fecha");
+                    JsonElement total = temp.get("total");
+                    JsonElement sale_price = temp.get("precio_venta");
+                    float profits = (sale_price.getAsInt()*total.getAsFloat()); // Ganancias 
+                    String value_sup = this.currencyFormat.format(value_supplies.getAsInt());
+                    String formatted = this.currencyFormat.format(profits);
+                    Object [] data ={
+                                      crop_name.getAsString(),
+                                      farm_name.getAsString(),
+                                      supplies_name.getAsString(),
+                                      value_sup,
+                                      amount_supplies.getAsString()+" "+unit_measurement.getAsString(),
+                                      amount_product.getAsString(),
+                                      total.getAsString(),
+                                      formatted,
+                                      date.getAsString(),
+                                    };
+                    this.modal.addRow(data);
+                    this.allData[i + 1] = new Object[]  {
+                                                            crop_name.getAsString(),
+                                                            farm_name.getAsString(),
+                                                            supplies_name.getAsString(),
+                                                            value_supplies.getAsString(),
+                                                            amount_supplies.getAsString()+" "+unit_measurement.getAsString(),
+                                                            amount_product.getAsString(),
+                                                            total.getAsString(),
+                                                            formatted,
+                                                            date.getAsString(),
+                                                        };
+                }
+            }else{
+                this.jScrollPane1.setVisible(false);
+                this.table.setVisible(false);
+                this.search.setVisible(false);
+                this.jButton1.setVisible(false);
+                this.jButton3.setVisible(false);
+                this.back.setVisible(false);
             }
+            
         }
     }
     
@@ -165,10 +183,10 @@ public class PanelProduccion extends javax.swing.JPanel {
                 }
             }
             document.add(pdfTable);
-            AlertMauricio alert = new AlertMauricio("EXITO", "El reporte se descargo", "success");
+            this.alert("EXITO", "El reporte se descargo", "success");
             } catch (Exception e) {
                 e.printStackTrace();
-                AlertMauricio alert = new AlertMauricio("ERROR", "Parece que algo salio mal", "error");
+                this.alert("ERROR", "Parece que algo salio mal", "error");
             } finally {
             document.close();   
         }
@@ -196,7 +214,7 @@ public class PanelProduccion extends javax.swing.JPanel {
     }
     
     public void alert(String title, String mesage, String type){
-        AlertMauricio alert = new AlertMauricio(title, mesage, type);
+        AlertMauricio alert = new AlertMauricio(title, mesage, type, false);
     }
     
     @SuppressWarnings("unchecked")
@@ -273,13 +291,14 @@ public class PanelProduccion extends javax.swing.JPanel {
         search.setText("Buscar...");
         search.setCaretColor(new java.awt.Color(0, 0, 0));
         search.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        search.setOpaque(true);
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 153, 153));
+        jButton3.setBackground(new java.awt.Color(10, 214, 61));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Buscar");
@@ -289,7 +308,7 @@ public class PanelProduccion extends javax.swing.JPanel {
             }
         });
 
-        back.setBackground(new java.awt.Color(255, 153, 153));
+        back.setBackground(new java.awt.Color(10, 214, 61));
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         back.setForeground(new java.awt.Color(0, 0, 0));
         back.setText("Volver");

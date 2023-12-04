@@ -225,7 +225,7 @@ public class PanelFincas extends javax.swing.JPanel {
     }
     
     public void alert(String title, String mesage, String type){
-        AlertMauricio alert = new AlertMauricio(title, mesage, type);
+        AlertMauricio alert = new AlertMauricio(title, mesage, type, false);
     }
     
     public void cleanSearch(){

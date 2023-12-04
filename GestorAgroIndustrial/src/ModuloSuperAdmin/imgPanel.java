@@ -9,7 +9,7 @@ class ImgPanel extends JPanel {
 
     public ImgPanel() {
         // Cargar la imagen en el constructor
-        this.image = new ImageIcon(getClass().getResource("/img/finca.png")).getImage();
+        this.image = new ImageIcon(getClass().getResource("/img/finca_2.png")).getImage();
     }
 
     @Override

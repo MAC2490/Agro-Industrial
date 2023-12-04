@@ -35,7 +35,7 @@ public class RegisterFarm extends javax.swing.JFrame {
         initComponents();
         setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
         this.textTitle = title;
-        this.panelFarm=panelFarm;
+        this.panelFarm = panelFarm;
         this.farm_id = farm_id;
         this.panelFarm = panelFarm;
         this.user = user;
@@ -385,7 +385,7 @@ public class RegisterFarm extends javax.swing.JFrame {
     }
     
     public void alert(String title, String mesage, String type){
-        AlertMauricio alert = new AlertMauricio(title, mesage, type);
+        AlertMauricio alert = new AlertMauricio(title, mesage, type, false);
     }
     
     public void validateProcess(String response, String type){
@@ -394,7 +394,6 @@ public class RegisterFarm extends javax.swing.JFrame {
             if (response.equals("100")) {
                 System.out.println("01");
                 this.panelFarm.card(true);
-                System.err.println("Entro aqui en 1");
                 this.alert("Registro", "La finca se registro correctamente", "success");
                 setVisible(false);
             }else if(response.equalsIgnoreCase("500")){
@@ -407,7 +406,6 @@ public class RegisterFarm extends javax.swing.JFrame {
         } else {
             if (response.equalsIgnoreCase("100")) {
                 this.panelFarm.card(true);
-                  System.err.println("Entro aqui en 2");
                 this.alert("Registro", "La finca se edito correctamente", "success");
                 setVisible(false);
             }else if(response.equalsIgnoreCase("500")){
