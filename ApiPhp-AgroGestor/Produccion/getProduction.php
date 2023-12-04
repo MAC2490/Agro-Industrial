@@ -10,7 +10,7 @@
     JOIN cultivos ON (cultivos_finca.id_cultivo = cultivos.id_cultivo)
     JOIN insumos_x_cultivos ON (fincas.id_finca = insumos_x_cultivos.id_finca)
     JOIN insumos ON (insumos_x_cultivos.id_insumo = insumos.insumos_id)
-    WHERE insumos_x_cultivos.id_finca = cultivos_finca.id_finca");
+    WHERE insumos_x_cultivos.id_finca = cultivos_finca.id_finca AND produccion_cultivos.total != 0");
     $data = $list->fetchAll();
     
     $response['list_crop'] = $data;
