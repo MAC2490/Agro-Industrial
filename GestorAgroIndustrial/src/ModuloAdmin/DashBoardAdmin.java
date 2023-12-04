@@ -1,15 +1,13 @@
-
 package ModuloAdmin;
 
 import Principal.Login;
 import javax.swing.JPanel;
 
-
 public class DashBoardAdmin extends javax.swing.JFrame {
 
     Login ventanaLogin;
     String SesionUsuario;
-    
+
     public DashBoardAdmin(Login ventanaLogin, String DatosUsuario) {
         this.ventanaLogin=ventanaLogin;
         this.SesionUsuario=DatosUsuario;
@@ -19,11 +17,12 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         this.defaultPanel();
     }
 
-    public void initAlternComponents(){
+    public void initAlternComponents() {
         System.out.println("Iniciando el DashBoard Admin");
         setLocationRelativeTo(null);
-        setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
+        setIconImage(getToolkit().createImage(ClassLoader.getSystemResource("img/LogoLOGIN.png")));
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -261,7 +260,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
 
     private void btnFincasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFincasActionPerformed
         PanelPrincipal.removeAll();
-        
+
         PanelFincas temporal = new PanelFincas();
         temporal.setSize(PanelPrincipal.getSize());
         temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
