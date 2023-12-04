@@ -1,27 +1,26 @@
-
 package ModuloAdmin;
 
 import Principal.Login;
-
 
 public class DashBoardAdmin extends javax.swing.JFrame {
 
     Login ventanaLogin;
     String SesionUsuario;
-    
+
     public DashBoardAdmin(Login ventanaLogin, String DatosUsuario) {
-        this.ventanaLogin=ventanaLogin;
-        this.SesionUsuario=DatosUsuario;
-        
+        this.ventanaLogin = ventanaLogin;
+        this.SesionUsuario = DatosUsuario;
+
         initComponents();
         initAlternComponents();
     }
 
-    public void initAlternComponents(){
+    public void initAlternComponents() {
         System.out.println("Iniciando el DashBoard Admin");
         setLocationRelativeTo(null);
-        setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
+        setIconImage(getToolkit().createImage(ClassLoader.getSystemResource("img/LogoLOGIN.png")));
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,11 +124,16 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         btnInsumos.setText("INSUMOS");
         btnInsumos.setBorderPainted(false);
         btnInsumos.setFocusable(false);
+        btnInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsumosActionPerformed(evt);
+            }
+        });
 
         btnRegistros.setBackground(new java.awt.Color(0, 0, 102));
         btnRegistros.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         btnRegistros.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistros.setText("REGISTROS");
+        btnRegistros.setText("PRODUCCIÓN");
         btnRegistros.setBorderPainted(false);
         btnRegistros.setFocusable(false);
 
@@ -283,7 +287,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
 
     private void btnFincasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFincasActionPerformed
         PanelPrincipal.removeAll();
-        
+
         PanelFincas temporal = new PanelFincas();
         temporal.setSize(PanelPrincipal.getSize());
         temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
@@ -303,7 +307,17 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         revalidate();
     }//GEN-LAST:event_btnPerfilActionPerformed
 
-    
+    private void btnInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsumosActionPerformed
+        PanelPrincipal.removeAll();
+
+        PanelInsumos temporal = new PanelInsumos(SesionUsuario);
+        temporal.setSize(PanelPrincipal.getSize());
+        temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
+        PanelPrincipal.add(temporal);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_btnInsumosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LogoGestor;
