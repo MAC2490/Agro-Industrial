@@ -1,27 +1,30 @@
+
 package ModuloAdmin;
 
+import ModuloSuperAdmin.PanelCultivos;
 import Principal.Login;
 import javax.swing.JPanel;
+
 
 public class DashBoardAdmin extends javax.swing.JFrame {
 
     Login ventanaLogin;
     String SesionUsuario;
-
+    
     public DashBoardAdmin(Login ventanaLogin, String DatosUsuario) {
-        this.ventanaLogin = ventanaLogin;
-        this.SesionUsuario = DatosUsuario;
+        this.ventanaLogin=ventanaLogin;
+        this.SesionUsuario=DatosUsuario;
+        System.out.println(DatosUsuario);
         initComponents();
         initAlternComponents();
         this.defaultPanel();
     }
 
-    public void initAlternComponents() {
+    public void initAlternComponents(){
         System.out.println("Iniciando el DashBoard Admin");
         setLocationRelativeTo(null);
-        setIconImage(getToolkit().createImage(ClassLoader.getSystemResource("img/LogoLOGIN.png")));
+        setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("img/LogoLOGIN.png") ) );
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -200,6 +203,11 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         btnCultivos.setText("CULTIVOS");
         btnCultivos.setBorderPainted(false);
         btnCultivos.setFocusable(false);
+        btnCultivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCultivosActionPerformed(evt);
+            }
+        });
         panelSideBar.add(btnCultivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 45));
 
         btnInsumos.setBackground(new java.awt.Color(0, 0, 102));
@@ -264,7 +272,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
 
     private void btnFincasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFincasActionPerformed
         PanelPrincipal.removeAll();
-
+        
         PanelFincas temporal = new PanelFincas();
         temporal.setSize(PanelPrincipal.getSize());
         temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
@@ -287,18 +295,28 @@ public class DashBoardAdmin extends javax.swing.JFrame {
     private void btnRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrosActionPerformed
         this.defaultPanel();
     }//GEN-LAST:event_btnRegistrosActionPerformed
-    
+
+    private void btnCultivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCultivosActionPerformed
+        PanelPrincipal.removeAll();
+
+        PanelCultivosAdmin temporal = new PanelCultivosAdmin(this.SesionUsuario);
+        temporal.setSize(PanelPrincipal.getSize());
+        temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
+        PanelPrincipal.add(temporal);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_btnCultivosActionPerformed
+
     private void btnInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsumosActionPerformed
         PanelPrincipal.removeAll();
 
-        PanelInsumos temporal = new PanelInsumos(SesionUsuario);
+        PanelInsumos temporal = new PanelInsumos(this.SesionUsuario);
         temporal.setSize(PanelPrincipal.getSize());
         temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
         PanelPrincipal.add(temporal);
         repaint();
         revalidate();
     }//GEN-LAST:event_btnInsumosActionPerformed
-
 
     public void defaultPanel(){
         PanelPrincipal.removeAll();
