@@ -284,7 +284,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
     private void btnFincasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFincasActionPerformed
         PanelPrincipal.removeAll();
         
-        PanelFincas temporal = new PanelFincas();
+        PanelFincas temporal = new PanelFincas(SesionUsuario);
         temporal.setSize(PanelPrincipal.getSize());
         temporal.setPreferredSize(PanelPrincipal.getPreferredSize());
         PanelPrincipal.add(temporal);
