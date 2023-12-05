@@ -153,6 +153,7 @@ public class InsumoAdmin extends javax.swing.JFrame {
         medida = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setFocusable(false);
