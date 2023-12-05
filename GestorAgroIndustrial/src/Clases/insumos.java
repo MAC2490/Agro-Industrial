@@ -26,6 +26,9 @@ public class insumos {
         this.proveedor = proveedor;
         this.estado = estado;
     }
+     public insumos(String insumos_id,String name){
+         
+     }
 
     public String getInsumos_id() {
         return insumos_id;
