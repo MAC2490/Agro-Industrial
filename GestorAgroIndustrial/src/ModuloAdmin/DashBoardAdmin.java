@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 
 public class DashBoardAdmin extends javax.swing.JFrame {
-
     Login ventanaLogin;
     String SesionUsuario;
     
@@ -18,7 +17,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         initAlternComponents();
         this.defaultPanel();
     }
-
+    
     public void initAlternComponents(){
         System.out.println("Iniciando el DashBoard Admin");
         setLocationRelativeTo(null);
@@ -268,7 +267,7 @@ public class DashBoardAdmin extends javax.swing.JFrame {
         dispose();
         this.ventanaLogin.setVisible(true);
     }//GEN-LAST:event_btnCerrarSessionActionPerformed
-
+    
     private void btnFincasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFincasActionPerformed
         PanelPrincipal.removeAll();
 

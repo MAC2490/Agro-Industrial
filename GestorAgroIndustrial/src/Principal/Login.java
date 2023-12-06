@@ -15,12 +15,29 @@ public class Login extends javax.swing.JFrame {
 
     ConsumoAPI ejemplo = new ConsumoAPI();
     Gson gson = new Gson();
+    private ConsumoAPI apiConsumption = new ConsumoAPI();
     
     public Login() {
         initComponents();
         initAlternComponents();
     }
    
+    public boolean validation(String SesionUsuario, String admin){
+        Map<String, String> getData = new HashMap<>();
+        getData.put("id_usuario", SesionUsuario);
+        String farm = this.apiConsumption.consumoGET("http://localhost/ApiPhp-AgroGestor/cultivos/GetMyFinca.php", getData);
+        System.out.println(farm);
+        if (admin.equals("ADMIN")) {
+            if (!farm.equals("[]")) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -124,7 +141,6 @@ public class Login extends javax.swing.JFrame {
 
         campo_documento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         campo_documento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campo_documento.setText("1");
 
         etqPassword.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         etqPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -132,7 +148,6 @@ public class Login extends javax.swing.JFrame {
 
         campo_password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         campo_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campo_password.setText("Q");
 
         btnIngresar.setBackground(new java.awt.Color(153, 255, 51));
         btnIngresar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
@@ -221,6 +236,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        
+        
         String documento = campo_documento.getText();
         String password = campo_password.getText();
         
@@ -229,39 +246,41 @@ public class Login extends javax.swing.JFrame {
             Map<String, String> getData = new HashMap<>();
             getData.put("cedula", campo_documento.getText());
             String ConsultaIndividual = ejemplo.consumoGET("http://localhost/ApiPhp-AgroGestor/usuarios/getPersona.php", getData);
-            
             if(!ConsultaIndividual.equals("[]")){
                 JsonObject jsonObject = gson.fromJson(ConsultaIndividual, JsonObject.class);
-
+                String id = jsonObject.get("id_usuario").getAsString();
                 String documentoRegistrado = jsonObject.get("cedula").getAsString();
                 String passwordRegistrado = jsonObject.get("password").getAsString();                
                 String estadoRegistrado = jsonObject.get("estado").getAsString();
                 String rolRegistrado = jsonObject.get("rol").getAsString();
-                
-                if( documento.equals(documentoRegistrado) && password.equals(passwordRegistrado)){
-                    if(estadoRegistrado.equals("ACTIVO")){
-                        if(rolRegistrado.equals("SUPER ADMIN")){
-                            String DatosUsuario = ConsultaIndividual;
-                            setVisible(false);
-                            DashBoard ventana = new DashBoard(this, DatosUsuario);
-                            ventana.setVisible(true);
-                            campo_documento.setText("");
-                            campo_password.setText("");
-                            
-                        }else if(rolRegistrado.equals("ADMIN")){
-                            String DatosUsuario = ConsultaIndividual;
-                            setVisible(false);
-                            DashBoardAdmin ventana = new DashBoardAdmin(this, DatosUsuario);
-                            ventana.setVisible(true);
-                            campo_documento.setText("");
-                            campo_password.setText("");
+                if (this.validation(id, rolRegistrado)) {
+                    if( documento.equals(documentoRegistrado) && password.equals(passwordRegistrado)){
+                        if(estadoRegistrado.equals("ACTIVO")){
+                            if(rolRegistrado.equals("SUPER ADMIN")){
+                                String DatosUsuario = ConsultaIndividual;
+                                setVisible(false);
+                                DashBoard ventana = new DashBoard(this, DatosUsuario);
+                                ventana.setVisible(true);
+                                campo_documento.setText("");
+                                campo_password.setText("");
+
+                            }else if(rolRegistrado.equals("ADMIN")){
+                                String DatosUsuario = ConsultaIndividual;
+                                setVisible(false);
+                                DashBoardAdmin ventana = new DashBoardAdmin(this, DatosUsuario);
+                                ventana.setVisible(true);
+                                campo_documento.setText("");
+                                campo_password.setText("");
+                            }
+                        }else if(estadoRegistrado.equals("INACTIVO")){
+                            Alert alerta = new Alert("Estado Inactivo", "Su estado es inactivo - Consulte a su administrador", "warning");
                         }
-                    }else if(estadoRegistrado.equals("INACTIVO")){
-                        Alert alerta = new Alert("Estado Inactivo", "Su estado es inactivo - Consulte a su administrador", "warning");
+
+                    }else{
+                        Alert alerta = new Alert("Datos Incorrectos", "La contraseña es incorrecta", "warning");
                     }
-                    
                 }else{
-                    Alert alerta = new Alert("Datos Incorrectos", "La contraseña es incorrecta", "warning");
+                    Alert alerta = new Alert("Sin finca", "El usuario no tiene finca asignada", "warning");
                 }
             }else{
                 Alert alerta = new Alert("No Encontrado", "La cedula no esta registrada", "error");

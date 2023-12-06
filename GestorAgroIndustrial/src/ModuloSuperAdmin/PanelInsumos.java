@@ -178,7 +178,7 @@ public class PanelInsumos extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(153, 255, 51));
         jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mas.png"))); // NOI18N
-        jButton1.setText("ADD INSUMO ");
+        jButton1.setText("AGREGAR INSUMO ");
         jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

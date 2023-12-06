@@ -95,6 +95,7 @@ public class RegistrarProduccion extends javax.swing.JPanel {
         Map<String, String> farm_id = new HashMap<>();
         farm_id.put("id", this.id_farm);
         response = this.apiConsumption.consumoPOST("http://localhost/ApiPhp-AgroGestor/Produccion/ProduccionFinca/getProductionTable.php", farm_id);
+        System.out.println(response);
         /*if (typeList) {
             Map<String, String> farm_id = new HashMap<>();
             farm_id.put("id", this.id_farm);

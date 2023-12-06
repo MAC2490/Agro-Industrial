@@ -71,7 +71,7 @@ public class PanelInsumos extends javax.swing.JPanel {
                 // ahora insertamos los datos en la tabla
 
                 System.out.println("valor:" + valor);
-                Object[] temporal = new Object[]{cultivo, insumoU, valor, cantidad, unidad_medida, fecha};
+                Object[] temporal = new Object[]{insumoU, cultivo, valor, cantidad, unidad_medida, fecha};
                 // lo añadimos a la tabla 
                 this.tabla.addRow(temporal);
             }
